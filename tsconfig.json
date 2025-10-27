@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "isolatedModules": true,
+    
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "outDir": "./dist",
+    "rootDir": "./",
+    "resolveJsonModule": true,
+    
+    "baseUrl": "./",
+    "paths": {
+      // เพิ่ม path mapping สำหรับ auth.js
+      "../../js/auth.js": ["./frontend/js/auth.js"],
+      "../../js/*.js": ["./frontend/js/*.js"],
+      "@/js/*": ["./frontend/js/*"],
+      "@/frontend/*": ["./frontend/*"]
+    },
+    
+    // ลบ @testing-library/jest-dom ออก
+    "types": ["jest", "node"]
+  },
+  
+  "include": [
+    "server/**/*.ts", 
+    "frontend/test/**/*.ts",
+    "frontend/js/**/*.js",  // เพิ่มบรรทัดนี้
+    "jest.setup.ts",
+    "jest.setupAfterEnv.js"
+  ],
+  
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

@@ -1,0 +1,2317 @@
+/* ==========================================
+   1. GLOBAL RESET & BASE
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+              url("/icon/backgroundweb.jpg") no-repeat center center fixed;
+  background-size: cover;
+  overflow-y: hidden;
+  height: 100vh;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ==========================================
+   2. TYPOGRAPHY
+   ========================================== */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  font-size: 2.5em;
+}
+
+h2, h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+/* ==========================================
+   3. BUTTONS
+   ========================================== */
+
+.add-satellite-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  min-width: 60px;
+  height: 30px;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+}
+
+.add-satellite-btn:hover {
+  background-color: #218838;
+}
+
+.add-satellite-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Show All Data Button - Fixed Color */
+#satelliteTable .data-table-btn,
+.satellite-row .data-table-btn,
+.satellite-row.selected-row .data-table-btn {
+  background-color: #007bff !important;
+  color: white !important;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s;
+}
+
+#satelliteTable .data-table-btn:hover,
+.satellite-row .data-table-btn:hover,
+.satellite-row.selected-row .data-table-btn:hover {
+  background-color: #0056b3 !important;
+}
+
+/* ==========================================
+   6. TABLES - BASE STYLES
+   ========================================== */
+table {
+  width: 1200px;
+  border-collapse: collapse;
+  background: #1a2332;
+  font-size: 10px;
+}
+
+th, td {
+  border: 1px solid #2d4a6b;
+  padding: 6px 10px;
+  text-align: center;
+  color: #e8edf5;
+}
+
+th {
+  background-color: #1e3a5f;
+}
+
+.table-container {
+  width: 1200px;
+  max-height: 800px;
+  overflow-y: auto;
+  border-radius: 8px;
+  margin: 20px auto 10px;
+  background: #1a2332;
+}
+
+.table-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: #0f1823;
+  border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #2d4a6b;
+  border-radius: 10px;
+  border: 2px solid #0f1823;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: #3d5a7b;
+}
+
+.table-container thead th {
+  position: sticky;
+  top: 0;
+  background-color: #00425c !important;
+  color: white;
+  z-index: 2;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+}
+
+/* Specific Tables */
+#selectedSatellites thead,
+#selectedSatellites tbody {
+  display: block;
+}
+
+#selectedSatellites tbody {
+  height: 100px;
+  overflow-y: auto;
+}
+
+#selectedSatellites tbody::-webkit-scrollbar {
+  width: 12px;
+}
+
+#selectedSatellites tbody::-webkit-scrollbar-track {
+  background: #0f1823;
+  border-radius: 10px;
+}
+
+#selectedSatellites tbody::-webkit-scrollbar-thumb {
+  background: #2d4a6b;
+  border-radius: 10px;
+  border: 2px solid #0f1823;
+}
+
+#selectedSatellites tbody::-webkit-scrollbar-thumb:hover {
+  background: #3d5a7b;
+}
+
+#selectedSatellites tr {
+  display: table;
+  width: 100px;
+  table-layout: fixed;
+}
+
+#selectedSatellites th {
+  position: sticky;
+  top: 0;
+  background: #1e3a5f;
+  color: #e8edf5;
+  z-index: 2;
+}
+
+#selectedSatellites td {
+  background: #243447;
+  color: #e8edf5;
+}
+
+#altitudeTable {
+  width: 1200px;
+  border-collapse: collapse;
+  font-size: 10px;
+  margin: auto;
+}
+
+#altitudeTable th,
+#altitudeTable td {
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#altitudeTable thead th {
+  position: sticky;
+  top: 0;
+  background-color: #00425c !important;
+  color: white;
+  z-index: 2;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+}
+
+#satelliteTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 10px;
+}
+
+#satelliteTable th,
+#satelliteTable td {
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  text-align: center;
+}
+
+#satelliteTable thead {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+#satelliteTable thead th {
+  position: sticky;
+  top: 0;
+  background-color: #00425c;
+  color: #ffffff;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  margin-top: 0px;
+  height: 50px;
+  line-height: 1.4;
+  border: 1px solid #ddd;
+}
+
+#satelliteTable tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background-color: #243447;
+}
+
+#satelliteTable tbody tr:hover {
+  background-color: #2d4a6b;
+}
+
+#satelliteTable tbody td {
+  color: #e8edf5;
+}
+
+.selected-row {
+  background-color: #1e3a5f !important;
+}
+
+.selected-row td {
+  background-color: #1e3a5f !important;
+  color: #13ff9d !important;
+  font-weight: 600 !important;
+}
+
+.selected-row td:not(:last-child) {
+  background-color: #1e3a5f !important;
+}
+
+tr td[colspan="8"] {
+  background: #f0f0f0 !important;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+}
+
+/* ==========================================
+   7. LAYOUT - APP STRUCTURE
+   ========================================== */
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  padding-top: 60px;
+}
+
+.main-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 1920px;
+  height: 1200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.content-area {
+  width: 1920px;
+  height: 1200px;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding-top: 50px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 300px;
+  background: white;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  z-index: 999;
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed {
+  transform: translateX(-100%);
+}
+
+.toggle-sidebar {
+  position: fixed;
+  top: 70px;
+  left: 20px;
+  z-index: 1000;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: left 0.3s ease;
+}
+
+.toggle-sidebar.sidebar-collapsed {
+  left: 20px;
+}
+
+/* ==========================================
+   8. GRID LAYOUT
+   ========================================== */
+#resultsWrapper {
+  display: grid;
+  grid-template-columns: 1020px 470px;
+  grid-template-rows: 500px 240px;
+  gap: 15px;
+  width: fit-content;
+  height: calc(100vh - 116px);
+  max-width: 100vw;
+  margin: 0;
+  padding: 15px;
+  box-sizing: border-box;
+  height: fit-content;
+  margin: auto;
+  transform-origin: top center;
+  transition: transform 0.3s ease;
+}
+
+.top-row,
+.bottom-row {
+  display: contents;
+}
+
+/* ==========================================
+   9. MAP (TOP LEFT)
+   ========================================== */
+#mapWrapper {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  width: 1020px;
+  height: 500px;
+  position: relative;
+  border: 1px solid #999;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1020px;
+  height: 500px;
+}
+
+/* ==========================================
+   10. SIDEBAR RIGHT (TOP RIGHT)
+   ========================================== */
+#sidebarRight {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 500px;
+}
+
+/* DateTime Styles - Local Time Only */
+#dateTime {
+  background: rgb(33, 42, 75);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  flex: 0 0 auto;
+  border: 1px solid #ccc;
+  width: 470px;
+}
+
+.datetime-header {
+  font-size: 11px;
+  color: #ffffff;
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+#localTimeView .datetime-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+#localTimeView .time-row,
+#localTimeView .date-row {
+  text-align: center;
+}
+
+.date-row, .time-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 4px 0;
+}
+
+.date-text, .time-text {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+/* เมื่อยังไม่มีข้อมูล ซ่อน dateTime */
+#dateTime:has(#localTimeView[style*="display: none"]) {
+  display: none;
+}
+
+/* เมื่อมีข้อมูลแล้ว แสดง dateTime */
+#dateTime:has(#localTimeView[style*="display: block"]) {
+  display: block;
+}
+
+.timezone {
+  font-size: 10px;
+  color: #95a5a6;
+  margin-left: 32px;
+  margin-top: -4px;
+}
+
+#chartWrapper {
+  background: rgb(33, 42, 75);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  flex: 1 1 auto;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: 470px;
+  max-height: 380px;
+}
+
+#chartWrapper h3 {
+  margin-bottom: 6px;
+  color: #ffffff;
+  font-size: 16px;
+  flex: 0 0 auto;
+}
+
+#chartdiv {
+  width: 100%;
+  height: 280px;
+  border-radius: 6px;
+  margin: 0;
+  padding: 0;
+  flex: 0 0 280px;
+}
+
+#fulldataButton {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #262c81;
+  color: #ffffff;
+  border: 1.5px solid #e0e0e0;
+  white-space: nowrap;
+  width: 130px;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 0px;
+  flex: 0 0 auto;
+  align-self: flex-end;
+}
+
+#fulldataButton:hover {
+  background: #4e4fad;
+  border-color: #bdbdbd;
+}
+
+/* ==========================================
+   11. TABLE WRAPPER (BOTTOM LEFT)
+   ========================================== */
+#tableWrapper {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  background: rgb(33, 42, 75);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid #ccc;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+#tableWrapper h3 {
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-size: 16px;
+  flex: 0 0 auto;
+}
+
+#tableSection {
+  width: 900px;
+  flex: 1 1 auto;
+  position: relative;
+  overflow-y: auto;
+  border: 1px solid #2d4a6b;
+  background-color: #0f1823;
+  border-radius: 8px;
+  padding: 0;
+  min-height: 0;
+  margin: auto;
+}
+
+#tableSection::-webkit-scrollbar {
+  width: 12px;
+}
+
+#tableSection::-webkit-scrollbar-track {
+  background: #0f1823;
+  border-radius: 10px;
+}
+
+#tableSection::-webkit-scrollbar-thumb {
+  background: #2d4a6b;
+  border-radius: 10px;
+  border: 2px solid #0f1823;
+}
+
+#tableSection::-webkit-scrollbar-thumb:hover {
+  background: #3d5a7b;
+}
+
+/* ==========================================
+   12. SATELLITE INFO (BOTTOM RIGHT)
+   ========================================== */
+#satellite-info-wrapper {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  width: 470px;
+  height: 240px;
+  background: rgb(33, 42, 75);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid #ccc;
+}
+
+#satellite-info-wrapper.hidden {
+  display: none;
+}
+
+/* ซ่อนตั้งแต่เริ่มต้นในหน้าจอเล็ก */
+@media (max-width: 1023px) {
+  #satellite-info-wrapper {
+    display: none;
+  }
+  
+  #satellite-info-wrapper.show {
+    display: block;
+  }
+}
+
+#satellite-info-wrapper > h3 {
+  display: none;
+}
+
+#satellite-info {
+  border: none !important;
+}
+
+#satellite-info h3 {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  padding-bottom: 10px;
+  border-bottom: 2px solid;
+}
+
+.satellite-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+  margin-top: 15px;
+}
+
+.satellite-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-left: 20px;
+}
+
+.satellite-info-label {
+  font-size: 11px;
+  color: #bdbdbd;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.satellite-info-value {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+/* ==========================================
+   13. MODALS
+   ========================================== */
+#navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #000842;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #2d4a6b;
+  border-radius: 8px;
+  max-width: 90vw;
+  max-height: 85vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #0f1823;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #2d4a6b;
+  border-radius: 10px;
+  border: 2px solid #0f1823;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #3d5a7b;
+}
+
+.modal-content h3 {
+  color: #e8edf5;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #2d4a6b;
+}
+
+.close {
+  color: #e8edf5;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close:hover,
+.close:focus {
+  color: #ff5252;
+}
+
+.detailed-modal-content {
+  background: #1a2332;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 85%;
+  overflow: auto;
+  position: relative;
+  border: 1px solid #2d3e50;
+}
+
+.detailed-modal-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.detailed-modal-content::-webkit-scrollbar-track {
+  background: #0f1823;
+  border-radius: 10px;
+}
+
+.detailed-modal-content::-webkit-scrollbar-thumb {
+  background: #2d4a6b;
+  border-radius: 10px;
+  border: 2px solid #0f1823;
+}
+
+.detailed-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #3d5a7b;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  position: sticky;
+  top: 0;
+  background: #0f1823;
+  padding: 15px;
+  padding-bottom: 10px;
+  z-index: 10;
+  border-bottom: 2px solid #2d4a6b;
+  border-radius: 8px 8px 0 0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #e8edf5;
+}
+
+.modal-close-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.modal-close-btn:hover {
+  background: #d32f2f;
+}
+
+/* ==========================================
+   TABLE WRAPPER FOR SCROLLBAR
+   ========================================== */
+.table-wrapper {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  max-height: 70vh;
+  width: 100%;
+  display: block;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #0f1823;
+  border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #2d4a6b;
+  border-radius: 10px;
+  border: 2px solid #0f1823;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #3d5a7b;
+}
+
+/* Show All Data Modal */
+#detailedTableModal .modal-body {
+  padding: 0 !important;
+  overflow: auto !important;
+  max-height: 75vh;
+  max-width: 90vw;
+  margin: auto;
+  background: #1a2332;
+}
+
+/* Scrollbar styling for Show All Data Modal - เหมือน Data from Graph */
+#detailedTableModal .modal-body::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+#detailedTableModal .modal-body::-webkit-scrollbar-track {
+  background: #0f1823;
+  border-radius: 10px;
+}
+
+#detailedTableModal .modal-body::-webkit-scrollbar-thumb {
+  background: #2d4a6b;
+  border-radius: 10px;
+  border: 2px solid #0f1823;
+}
+
+#detailedTableModal .modal-body::-webkit-scrollbar-thumb:hover {
+  background: #3d5a7b;
+}
+
+#detailedTableModal .detailed-modal-content {
+  background-color: #000842;
+  padding: 15px;
+  margin: 0;
+  max-width: 90vw;
+  width: auto;
+}
+
+#detailedDataTable {
+  width: 100%;
+  max-width: 1100px;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin: 0 auto;
+}
+
+#detailedDataTable thead {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+#detailedDataTable thead tr {
+  background: #1e3a5f;
+  color: white;
+}
+
+#detailedDataTable th {
+  padding: 8px;
+  border: 1px solid #2d4a6b;
+  text-align: center;
+  color: #e8edf5;
+  background: #1e3a5f;
+  position: sticky;
+  top: 0;
+  font-size: 11px;
+}
+
+#detailedDataTable td {
+  padding: 8px;
+  border: 1px solid #2d4a6b;
+  text-align: center;
+  color: #e8edf5;
+  background: #243447;
+  font-size: 11px;
+}
+
+#detailedDataTable td:nth-child(3),
+#detailedDataTable td:nth-child(4),
+#detailedDataTable td:nth-child(5),
+#detailedDataTable td:nth-child(6) {
+  text-align: right;
+}
+
+#detailedDataTable tbody tr:nth-child(even) {
+  background: #1f2d3d;
+}
+
+#detailedDataTable tbody tr:nth-child(odd) td {
+  background: #243447;
+}
+
+#detailedDataTable tbody tr:hover td {
+  background: #2d4a6b !important;
+}
+
+.modal-footer {
+  margin-top: 15px;
+  padding: 10px;
+  background: #0f1823;
+  border-radius: 4px;
+  font-size: 12px;
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  color: #e8edf5;
+  border-top: 1px solid #2d4a6b;
+  text-align: right;
+}
+
+/* Data from Graph Modal */
+#detailedTableModalChart .modal-body-chart {
+  padding: 0 !important;
+  overflow: auto !important;
+  max-height: 75vh;
+  max-width: 90vw;
+  margin: auto;
+  background: #1a2332;
+}
+
+#detailedTableModalChart .modal-body-chart::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+#detailedTableModalChart .modal-body-chart::-webkit-scrollbar-track {
+  background: #0f1823;
+  border-radius: 10px;
+}
+
+#detailedTableModalChart .modal-body-chart::-webkit-scrollbar-thumb {
+  background: #2d4a6b;
+  border-radius: 10px;
+  border: 2px solid #0f1823;
+}
+
+#detailedTableModalChart .modal-body-chart::-webkit-scrollbar-thumb:hover {
+  background: #3d5a7b;
+}
+
+#detailedTableModalChart .detailed-modal-content {
+  background-color: #000842;
+  padding: 15px;
+  margin: 0;
+  max-width: 90vw;
+  width: auto;
+}
+
+#detailedDatachart {
+  width: 100%;
+  max-width: 1100px;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin: 0 auto;
+}
+
+#detailedDatachart thead {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+#detailedDatachart thead tr {
+  background: #1e3a5f;
+  color: white;
+}
+
+#detailedDatachart th {
+  padding: 8px;
+  border: 1px solid #2d4a6b;
+  text-align: center;
+  color: #e8edf5;
+  background: #1e3a5f;
+  position: sticky;
+  top: 0;
+  font-size: 11px;
+}
+
+#detailedDatachart td {
+  padding: 8px;
+  border: 1px solid #2d4a6b;
+  text-align: center;
+  color: #e8edf5;
+  background: #243447;
+  font-size: 11px;
+}
+
+#detailedDatachart td:nth-child(3),
+#detailedDatachart td:nth-child(4),
+#detailedDatachart td:nth-child(5),
+#detailedDatachart td:nth-child(6) {
+  text-align: right;
+}
+
+#detailedDatachart tbody tr:nth-child(even) {
+  background: #1f2d3d;
+}
+
+#detailedDatachart tbody tr:nth-child(odd) td {
+  background: #243447;
+}
+
+#detailedDatachart tbody tr:hover td {
+  background: #2d4a6b !important;
+}
+
+.modal-footer-chart {
+  margin-top: 15px;
+  padding: 10px;
+  background: #0f1823;
+  border-radius: 4px;
+  font-size: 12px;
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  color: #e8edf5;
+  border-top: 1px solid #2d4a6b;
+  text-align: right;
+}
+
+/* ==========================================
+   14. SATELLITE SEARCH ITEMS
+   ========================================== */
+.satellite-item {
+  border: 1px solid #2d4a6b;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #243447;
+  transition: background 0.2s;
+  color: #e8edf5;
+}
+
+.satellite-item:hover {
+  background: #2d4a6b;
+}
+
+.satellite-item-with-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: 1px solid #2d4a6b;
+  padding: 15px;
+  margin: 8px 0;
+  border-radius: 5px;
+  background-color: #1a2332;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.satellite-content {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.satellite-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #e8edf5;
+}
+
+.satellite-tle {
+  font-family: monospace;
+  font-size: 12px;
+  color: #bdbdbd;
+  white-space: pre-line;
+}
+
+
+#searchModal .modal-content {
+  background-color: #1d213c !important;
+  width: 70%;
+  max-width: 1100px;
+  height: auto;
+  max-height: 85vh;
+  margin-top: 70px;
+}
+
+#searchModal .modal-body {
+  background: #1a2332;
+  padding: 15px;
+}
+
+#searchModal #modalResults {
+  background: transparent;
+}
+
+/* ==========================================
+   RESPONSIVE - DESKTOP SCALING
+   ========================================== */
+
+/* 4K (2560px+) */
+@media (min-width: 2560px) {
+  #resultsWrapper {
+    transform: scale(1.6);
+    margin-bottom: 350px;
+  }
+  
+  #chartdiv {
+    transform: scale(0.80);
+    transform-origin: left top;
+    margin-bottom: -56px;
+  }
+
+  #fulldataButton{
+    margin-top: 50px;
+  }
+}
+
+/* QHD (2048-2559px) */
+@media (min-width: 2048px) and (max-width: 2559px) {
+  #resultsWrapper {
+    transform: scale(1.3);
+    margin-bottom: 180px;
+  }
+  
+  #chartdiv {
+    transform: scale(0.86);
+    transform-origin: left top;
+    margin-bottom: -40px;
+  }
+
+  #fulldataButton{
+    margin-top: 40px;
+  }
+}
+
+/* Full HD (1920-2047px) */
+@media (min-width: 1920px) and (max-width: 2047px) {
+  #resultsWrapper {
+    transform: scale(1.2);
+    margin-bottom: 120px;
+  }
+
+  #chartdiv {
+    transform: scale(0.93);
+    transform-origin: left top;
+    margin-bottom: -30px;
+  }
+
+  #fulldataButton{
+    margin-top: 30px;
+  }
+}
+
+/* Laptop+ (1680-1919px) */
+@media (min-width: 1680px) and (max-width: 1919px) {
+  #resultsWrapper {
+    transform: scale(1.1);
+    margin-bottom: 50px;
+  }
+
+  #chartdiv {
+    transform: scale(0.95);
+    transform-origin: left top;
+    margin-bottom: -20px;
+  }
+
+  #fulldataButton{
+    margin-top: 20px;
+  }
+}
+
+/* Base (1536-1679px) */
+@media (min-width: 1536px) and (max-width: 1679px) {
+  #resultsWrapper {
+    transform: scale(1);
+    margin-bottom: 0;
+  }
+  
+  #chartdiv {
+    transform: scale(1.03);
+    transform-origin: left top;
+    margin-bottom: 0;
+  }
+
+  #fulldataButton{
+    margin-top: 0;
+    z-index: 10;
+  }
+}
+
+/* Laptop (1440-1535px) */
+@media (min-width: 1440px) and (max-width: 1535px) {
+  #resultsWrapper {
+    transform: scale(0.88);
+    transform-origin: top center;
+    margin-bottom: -30px;
+  }
+  
+  #chartdiv {
+    transform: scale(1.07);
+    transform-origin: left top;
+    margin-bottom: 0px;
+  }
+
+  #fulldataButton{
+    margin-top: 0px;
+    z-index: 10;
+  }
+}
+
+/* Laptop (1366-1439px) */
+@media (min-width: 1366px) and (max-width: 1439px) {
+  #resultsWrapper {
+    transform: scale(0.88);
+    transform-origin: left top;
+    margin-bottom: -60px;
+    margin-left: 10px;
+  }
+  
+  #chartdiv {
+    transform: scale(1.09);
+    transform-origin: left top;
+    margin-bottom: -50px;
+  }
+
+  #fulldataButton{
+    margin-top: 40px;
+    z-index: 10;
+  }
+}
+
+/* Laptop Small (1280-1365px) */
+@media (min-width: 1280px) and (max-width: 1365px) {
+  #resultsWrapper {
+    transform: scale(0.83);
+    transform-origin: left top;
+    margin-bottom: -90px;
+    margin-left: 10px;
+  }
+  
+  #chartdiv {
+    transform: scale(1.1);
+    transform-origin: left top;
+    margin-bottom: -50px;
+  }
+
+  #fulldataButton{
+    margin-top: 40px;
+    z-index: 10;
+  }
+  
+  .modal-content {
+    transform: scale(0.9);
+    transform-origin: center;
+    width: 90vw;
+  }
+  
+  .table-wrapper {
+    max-height: 60vh;
+  }
+}
+
+/* HD (1152-1279px) */
+@media (min-width: 1152px) and (max-width: 1279px) {
+  #resultsWrapper {
+    transform: scale(0.74);
+    transform-origin: left top;
+    margin-bottom: -130px;
+    margin-left: 10px;
+  }
+  
+  #chartdiv {
+    transform: scale(1.2);
+    transform-origin: left top;
+    margin-bottom: -50px;
+  }
+
+  #fulldataButton{
+    margin-top: 40px;
+    z-index: 10;
+  }
+  
+  .modal-content {
+    transform: scale(0.85);
+    transform-origin: center;
+    width: 90vw;
+  }
+  
+  .table-wrapper {
+    max-height: 55vh;
+  }
+}
+
+/* Tablet Landscape (1024-1151px) */
+@media (min-width: 1024px) and (max-width: 1151px) {
+  #resultsWrapper {
+    transform: scale(0.66);
+    transform-origin: left top;
+    margin-bottom: -180px;
+    margin-left: 10px;
+  }
+  
+  #chartdiv {
+    transform: scale(1.25);
+    transform-origin: left top;
+    margin-bottom: -50px;
+  }
+
+  #fulldataButton{
+    margin-top: 40px;
+    z-index: 10;
+  }
+  
+  .modal-content {
+    transform: scale(0.8);
+    transform-origin: center;
+    width: 90vw;
+  }
+  
+  .table-wrapper {
+    max-height: 50vh;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 899px) {
+  /*
+   * ส่วนนี้คือโค้ดจัดเรียง Layout เดิมที่ถูกต้อง
+   * เพื่อให้ Map, 2 คอลัมน์, และ Table เรียงกัน
+   */
+  #resultsWrapper {
+    display: flex;
+    flex-direction: column; 
+    width: 95%;
+    max-width: 850px;
+    gap: 12px;
+    margin: 0 auto;
+    padding: 12px;
+    position: relative;
+  }
+
+  /* Map: คงค่าเดิม */
+  #mapWrapper {
+    width: 1020px;
+    height: 500px;
+    transform: scale(0.75);
+    transform-origin: left top;
+    margin: 0 auto -110px auto; 
+  }
+  
+  /* ส่วน 2 คอลัมน์ (ข้อมูล/กราฟ) */
+  #sidebarRight {
+    display: flex; 
+    flex-direction: row; 
+    gap: 12px; 
+    width: 100%;
+    min-height: 320px;
+  }
+
+  /* คอลัมน์ซ้าย: จัดเรียง Time และ Satellite Info ซ้อนกัน */
+  #dateTime {
+    flex: 1; 
+    min-width: 0;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column; 
+    gap: 8px;
+    font-size: 10px;
+    height: 100px;
+  }
+
+  #dateTime .time-text, 
+  #dateTime .date-text,
+  #dateTime .datetime-header {
+      font-size: 8px !important;
+  }
+
+  #dateTime .datetime-header, 
+  #dateTime #localTimezoneLabel {
+      font-size: 6px !important;
+  }
+
+  /* Satellite Info - ซ้อนทับมาใต้วันที่ */
+  #satellite-info-wrapper {
+    position: absolute;
+    top: 550px;
+    left: 12px;
+    width: 300px !important;
+    min-height: 180px;
+    height: auto;
+    font-size: 7px;
+    z-index: 10;
+    /* display: none !important; */
+    padding: 10px !important;
+  }
+
+  #satellite-info-wrapper #satellite-info {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 280px !important;
+  }
+
+  #satellite-info-wrapper #satellite-info h3 {
+    font-size: 11px !important;
+    margin-bottom: 8px !important;
+    padding-bottom: 6px !important;
+    border-bottom-width: 2px !important;
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-label {
+    font-size: 7px !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-value {
+    font-size: 10px !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-grid {
+    gap: 5px 10px !important;
+    margin-top: 8px !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-item {
+    margin-left: 8px !important;
+  }
+
+  /* คอลัมน์ขวา: กราฟ */
+  #chartWrapper {
+    flex: 1; 
+    min-width: 0;
+  }
+  
+  #chartdiv {
+    height: 280px;
+  }
+
+  /* ตาราง: เต็มความกว้าง - ซ้อนทับมาใต้ satellite info */
+  #tableWrapper {
+    position: absolute;
+    top: 820px;
+    left: 12px;
+    right: 12px;
+    width: 100%;
+    min-height: 200px;
+    z-index: 5;
+  }
+
+  #tableSection{
+    width: 100%;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 959px) {
+  #resultsWrapper {
+    display: flex;
+    flex-direction: column; 
+    width: 95%;
+    max-width: 900px;
+    gap: 15px;
+    margin: 0 auto;
+    padding: 15px;
+    position: relative;
+  }
+
+  #mapWrapper {
+    width: 1020px;
+    height: 500px;
+    transform: scale(0.82);
+    transform-origin: left top;
+    margin: 0 auto -90px auto;
+  }
+  
+  #sidebarRight { 
+    display: flex;
+    flex-direction: row; 
+    gap: 15px;
+    width: 100%;
+    min-height: 350px;
+  }
+
+  #dateTime {
+    flex: 1;
+    min-width: 0;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 11px;
+    height: 110px;
+  }
+
+  #dateTime .time-text, 
+  #dateTime .date-text,
+  #dateTime .datetime-header {
+    font-size: 9px !important;
+  }
+
+  #dateTime .datetime-header, 
+  #dateTime #localTimezoneLabel {
+    font-size: 7px !important;
+  }
+
+  #satellite-info-wrapper {
+    position: absolute;
+    top: 600px;
+    left: 15px;
+    width: 350px !important;
+    min-height: 200px;
+    height: auto;
+    font-size: 8px;
+    z-index: 10;
+    padding: 12px !important;
+  }
+
+  #satellite-info-wrapper #satellite-info {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 330px !important;
+  }
+
+  #satellite-info-wrapper #satellite-info h3 {
+    font-size: 12px !important;
+    margin-bottom: 10px !important;
+    padding-bottom: 8px !important;
+    border-bottom-width: 2px !important;
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-label {
+    font-size: 8px !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-value {
+    font-size: 11px !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-grid {
+    gap: 6px 12px !important;
+    margin-top: 10px !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-item {
+    margin-left: 10px !important;
+  }
+
+  #chartWrapper {
+    flex: 1;
+    min-width: 0;
+  }
+
+  #chartdiv {
+    height: 300px;
+  }
+
+  #tableWrapper {
+    position: absolute;
+    top: 880px;
+    left: 15px;
+    right: 15px;
+    width: 100%;
+    min-height: 220px;
+    z-index: 5;
+  }
+
+  #tableSection {
+    width: 100%;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1023px) {
+  #resultsWrapper {
+    display: flex;
+    flex-direction: column; 
+    width: 95%;
+    max-width: 950px;
+    gap: 15px;
+    margin: 0 auto;
+    padding: 15px;
+    position: relative;
+  }
+
+  #mapWrapper {
+    width: 1020px;
+    height: 500px;
+    transform: scale(0.88);
+    transform-origin: left top;
+    margin: 0 auto -60px auto; 
+  }
+
+  #sidebarRight { 
+    display: flex;
+    flex-direction: row; 
+    gap: 15px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 380px;
+  }
+  
+  #dateTime {
+    flex: 1;
+    min-width: 0;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 12px;
+    height: 120px;
+  }
+
+  #dateTime .time-text, 
+  #dateTime .date-text,
+  #dateTime .datetime-header {
+    font-size: 10px !important;
+  }
+
+  #dateTime .datetime-header, 
+  #dateTime #localTimezoneLabel {
+    font-size: 8px !important;
+  }
+
+  #satellite-info-wrapper {
+    position: absolute;
+    top: 640px;
+    left: 15px;
+    width: 380px !important;
+    min-height: 220px;
+    height: auto;
+    font-size: 9px;
+    z-index: 10;
+    padding: 13px !important;
+  }
+
+  #satellite-info-wrapper #satellite-info {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 360px !important;
+  }
+
+  #satellite-info-wrapper #satellite-info h3 {
+    font-size: 13px !important;
+    margin-bottom: 10px !important;
+    padding-bottom: 8px !important;
+    border-bottom-width: 2px !important;
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-label {
+    font-size: 9px !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-value {
+    font-size: 12px !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-grid {
+    gap: 7px 14px !important;
+    margin-top: 10px !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-item {
+    margin-left: 12px !important;
+  }
+  
+  #chartWrapper {
+    flex: 1;
+    min-width: 0;
+    min-height: 400px;
+  }
+
+  #chartdiv {
+    height: 320px;
+  }
+
+  #tableWrapper {
+    position: absolute;
+    top: 940px;
+    left: 15px;
+    right: 15px;
+    width: 100%; 
+    max-width: 100%;
+    height: auto;
+    min-height: 240px;
+    z-index: 5;
+  }
+
+  #tableSection {
+    width: 100%;
+  }
+}
+
+
+/* Mobile Layout (< 800px) */
+@media (max-width: 799px) {
+  #resultsWrapper {
+    transform: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 15px !important;
+    margin: 0 auto !important;
+    padding: 10px !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+    position: relative;
+  }
+
+  #mapWrapper {
+    width: 1020px;
+    height: 500px;
+    transform: scale(0.65);
+    transform-origin: left top;
+    margin: 0 auto -170px 10px;
+    order: 1;
+  }
+
+  #sidebarRight {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    order: 2;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  #dateTime {
+    flex: 1;
+    min-width: 0;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 11px;
+    height: 100px;
+    padding: 15px !important;
+  }
+
+  #dateTime .time-text, 
+  #dateTime .date-text,
+  #dateTime .datetime-header {
+    font-size: 9px !important;
+  }
+
+  #dateTime .datetime-header, 
+  #dateTime #localTimezoneLabel {
+    font-size: 7px !important;
+  }
+
+  #satellite-info-wrapper {
+    position: absolute;
+    top: 525px;
+    left: 10px;
+    width: 320px !important;
+    min-height: 200px !important;
+    height: auto;
+    font-size: 8px;
+    z-index: 10;
+    padding: 12px !important;
+    order: 3;
+  }
+
+  #satellite-info-wrapper #satellite-info {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 300px !important;
+  }
+
+  #satellite-info-wrapper #satellite-info h3 {
+    font-size: 12px !important;
+    margin-bottom: 10px !important;
+    padding-bottom: 8px !important;
+    border-bottom-width: 2px !important;
+    width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-label {
+    font-size: 8px !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-value {
+    font-size: 11px !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-grid {
+    gap: 6px 12px !important;
+    margin-top: 10px !important;
+  }
+
+  #satellite-info-wrapper .satellite-info-item {
+    margin-left: 10px !important;
+  }
+
+  #chartWrapper {
+    flex: 1;
+    min-width: 0;
+    min-height: 400px !important;
+    width: 100%;
+  }
+
+  #chartdiv {
+    width: 100% !important;
+    height: 350px !important;
+  }
+
+  #tableWrapper {
+    position: absolute;
+    top: 780px;
+    left: 15px;
+    right: 15px;
+    width: 95%;
+    min-height: 240px;
+    z-index: 5;
+    order: 4;
+  }
+
+  #tableSection {
+    width: 100%;
+  }
+}
+
+@media (max-width: 699px) {
+  #mapWrapper {
+    transform: scale(0.55) !important;
+    margin: 0 auto -225px auto !important;
+  }
+
+  #chartdiv {
+    height: 300px !important;
+  }
+}
+
+@media (max-width: 599px) {
+  #mapWrapper {
+    transform: scale(0.45) !important;
+    margin: 0 auto -275px auto !important;
+  }
+
+  #chartdiv {
+    height: 280px !important;
+  }
+}
+
+@media (max-width: 499px) {
+  #mapWrapper {
+    transform: scale(0.38) !important;
+    margin: 0 auto -310px auto !important;
+  }
+
+  #chartdiv {
+    height: 250px !important;
+  }
+}
+
+@media (max-width: 419px) {
+  #mapWrapper {
+    transform: scale(0.33) !important;
+    margin: 0 auto -335px auto !important;
+  }
+
+  #chartdiv {
+    height: 220px !important;
+  }
+}
+
+@media (max-width: 359px) {
+  #mapWrapper {
+    transform: scale(0.30) !important;
+    margin: 0 auto -350px auto !important;
+  }
+
+  #chartdiv {
+    height: 200px !important;
+  }
+}
+
+/* ==========================================
+   FIX SIDEBAR
+   ========================================== */
+@media (max-width: 1023px) {
+  .sidebar {
+    width: 250px;
+  }
+  
+  .toggle-sidebar {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 799px) {
+  .sidebar {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* ==========================================
+   FIX MODAL
+   ========================================== */
+@media (max-width: 1023px) {
+  .modal {
+    overflow-y: auto;
+  }
+  
+  .modal-content {
+    margin: 20px auto;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 599px) {
+  .modal-content {
+    width: 95%;
+    margin: 10px auto;
+    padding: 15px;
+  }
+}
+
+/* ==========================================
+   TYPOGRAPHY & UI ADJUSTMENTS
+   ========================================== */
+@media (max-width: 599px) {
+  body {
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2, h3 {
+    font-size: 1.2rem;
+  }
+  
+  button, input, select {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .datetime-header {
+    font-size: 12px !important;
+  }
+
+  .date-text, .time-text {
+    font-size: 16px !important;
+  }
+
+  .satellite-info-label {
+    font-size: 12px !important;
+  }
+
+  .satellite-info-value {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 419px) {
+  body {
+    font-size: 13px;
+  }
+  
+  h1 {
+    font-size: 1.3rem;
+  }
+  
+  h2, h3 {
+    font-size: 1.1rem;
+  }
+
+  .date-text, .time-text {
+    font-size: 14px !important;
+  }
+
+  .satellite-info-value {
+    font-size: 14px !important;
+  }
+}
+
+/* เพิ่มโค้ดนี้ไปที่ท้ายไฟล์ stylecalculate.css */
+
+/* เพิ่มโค้ดนี้ไปที่ท้ายไฟล์ stylecalculate.css */
+
+/* ==========================================
+   INITIAL STATE - FULLSCREEN MAP (BASE)
+   ========================================== */
+body.initial-state {
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html:has(body.initial-state) {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.initial-state .content-area {
+  padding-top: 0 !important;
+  overflow: hidden !important;
+}
+
+body.initial-state .app-container {
+  padding-top: 0 !important;
+}
+
+body.initial-state #resultsWrapper {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important; /* เปลี่ยนเป็น flex-start */
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 1 !important;
+}
+
+body.initial-state #mapWrapper {
+  width: 1020px !important;
+  height: 500px !important;
+  position: relative !important;
+  z-index: 1;
+  grid-column: unset !important;
+  grid-row: unset !important;
+  border: none !important;
+  border-radius: 0 !important;
+  transform-origin: center top !important;
+}
+
+body.initial-state #map {
+  width: 1020px !important;
+  height: 500px !important;
+}
+
+/* ให้ navbar และ sidebar อยู่ด้านหน้า */
+body.initial-state #navbar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important;
+}
+
+body.initial-state .sidebar {
+  position: fixed !important;
+  z-index: 999 !important;
+}
+
+body.initial-state .toggle-sidebar {
+  position: fixed !important;
+  z-index: 1000 !important;
+}
+
+/* ซ่อนส่วนอื่นๆ */
+body.initial-state #sidebarRight,
+body.initial-state #tableWrapper,
+body.initial-state #satellite-info-wrapper,
+body.initial-state .bottom-row {
+  display: none !important;
+}
+
+/* เมื่อคำนวณแล้ว - กลับมาแสดงปกติ */
+body.calculated-state {
+  overflow: auto !important;
+}
+
+body.calculated-state .content-area {
+  padding-top: 50px !important;
+}
+
+body.calculated-state #resultsWrapper {
+  position: relative !important;
+  z-index: auto !important;
+}
+
+body.calculated-state #sidebarRight,
+body.calculated-state #tableWrapper,
+body.calculated-state #satellite-info-wrapper {
+  display: flex !important;
+}
+
+/* ==========================================
+   RESPONSIVE - กำหนดระยะห่างจากขอบบนและ Scale
+   ========================================== */
+
+/* 4K (2560px+) */
+@media (min-width: 2560px) {
+  body.initial-state #mapWrapper {
+    margin-top: 0px !important;
+    transform: scale(1.8) !important;
+  }
+}
+
+/* QHD (2048-2559px) */
+@media (min-width: 2048px) and (max-width: 2559px) {
+  body.initial-state #mapWrapper {
+    margin-top: 5px !important;
+    transform: scale(2) !important;
+  }
+}
+
+/* Full HD (1920-2047px) */
+@media (min-width: 1920px) and (max-width: 2047px) {
+  body.initial-state #mapWrapper {
+    margin-top: 10px !important;
+    transform: scale(2.15) !important;
+  }
+}
+
+/* Laptop+ (1680-1919px) */
+@media (min-width: 1680px) and (max-width: 1919px) {
+  body.initial-state #mapWrapper {
+    margin-top: 40px !important;
+    transform: scale(2) !important;
+  }
+}
+
+/* Base (1536-1679px) */
+@media (min-width: 1536px) and (max-width: 1679px) {
+  body.initial-state #mapWrapper {
+    margin-top: 40px !important;
+    transform: scale(1.9) !important;
+  }
+}
+
+/* Laptop (1440-1535px) */
+@media (min-width: 1440px) and (max-width: 1535px) {
+  body.initial-state #mapWrapper {
+    margin-top: 55px !important;
+    transform: scale(1.9) !important;
+  }
+}
+
+/* Laptop (1366-1439px) */
+@media (min-width: 1366px) and (max-width: 1439px) {
+  body.initial-state #mapWrapper {
+    margin-top: 65px !important;
+    transform: scale(1.9) !important;
+  }
+}
+
+/* Laptop Small (1280-1365px) */
+@media (min-width: 1280px) and (max-width: 1365px) {
+  body.initial-state #mapWrapper {
+    margin-top: 70px !important;
+    transform: scale(1.9) !important;
+  }
+}
+
+/* HD (1152-1279px) */
+@media (min-width: 1152px) and (max-width: 1279px) {
+  body.initial-state #mapWrapper {
+    margin-top: 60px !important;
+    transform: scale(1.8) !important;
+  }
+}
+
+/* Tablet Landscape (1024-1151px) */
+@media (min-width: 1024px) and (max-width: 1151px) {
+  body.initial-state #mapWrapper {
+    margin-top: 70px !important;
+    transform: scale(1.8) !important;
+  }
+}
+
+/* Tablet (960-1023px) */
+@media (min-width: 960px) and (max-width: 1023px) {
+  body.initial-state #mapWrapper {
+    margin-top: 50px !important;
+    transform: scale(1.2) !important;
+  }
+}
+
+/* Tablet (900-959px) */
+@media (min-width: 900px) and (max-width: 959px) {
+  body.initial-state #mapWrapper {
+    margin-top: 45px !important;
+    transform: scale(1) !important;
+  }
+}
+
+/* Tablet (800-899px) */
+@media (min-width: 800px) and (max-width: 899px) {
+  body.initial-state #mapWrapper {
+    margin-top: 45px !important;
+    transform: scale(0.9) !important;
+  }
+}
+
+/* Mobile Layout (< 800px) */
+@media (max-width: 799px) {
+  body.initial-state #mapWrapper {
+    margin-top: 45px !important;
+    transform: scale(0.9) !important;
+  }
+}
+
+@media (max-width: 699px) {
+  body.initial-state #mapWrapper {
+    margin-top: 45px !important;
+    transform: scale(0.75) !important;
+  }
+}
+
+@media (max-width: 599px) {
+  body.initial-state #mapWrapper {
+    margin-top: 45px !important;
+    transform: scale(0.70) !important;
+  }
+}
+
+@media (max-width: 499px) {
+  body.initial-state #mapWrapper {
+    margin-top: 45px !important;
+    transform: scale(0.60) !important;
+  }
+}
+
+@media (max-width: 419px) {
+  body.initial-state #mapWrapper {
+    margin-top: 40px !important;
+    transform: scale(0.45) !important;
+  }
+}
+
+/* แก้ไขเฉพาะจอขนาด 1279px ลงมาที่แผนที่ถูกตัดด้านซ้าย */
+@media (max-width: 1279px) {
+  body.initial-state #resultsWrapper {
+    overflow: visible !important;
+    justify-content: flex-start !important; /* เปลี่ยนจาก center */
+    padding-left: 0 !important;
+  }
+  
+  body.initial-state #mapWrapper {
+    overflow: visible !important;
+    transform-origin: left top !important; /* เปลี่ยนจาก center top */
+    margin-left: 0 !important;
+  }
+  
+  body.initial-state #map {
+    overflow: visible !important;
+  }
+}
+
+/* แก้ไขเฉพาะจอขนาด 1535px ลงมา (แต่ใหญ่กว่า 1279px) ที่ถูกตัดด้านล่าง */
+@media (min-width: 1280px) and (max-width: 1535px) {
+  body.initial-state #resultsWrapper {
+    overflow: visible !important;
+  }
+  
+  body.initial-state #mapWrapper {
+    overflow: visible !important;
+  }
+  
+  body.initial-state #map {
+    overflow: visible !important;
+  }
+}

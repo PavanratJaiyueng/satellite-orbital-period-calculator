@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Satellite Position</title>
+  <link rel="stylesheet" href="css/leaflet.css" />
+  <link rel="stylesheet" href="css/stylecalculate.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styleNavbar.css">
+  <link rel="stylesheet" href="css/styleSidebar.css">
+</head>
+<body>
+
+  <div id="navbar"></div>
+
+  <div class="app-container">
+    <button class="toggle-sidebar" id="toggleSidebar" title="Configuration">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+
+    <div class="sidebar" id="sidebar">
+    </div>
+
+<div class="main-content">
+  <div class="content-area">
+    <div id="resultsWrapper">
+      <div class="top-row">
+        <div id="mapWrapper">
+          <div id="map"></div>
+        </div>
+
+<div id="sidebarRight">
+  <div id="dateTime">
+    <!-- แสดงแค่ Local Time เมื่อคำนวณแล้ว -->
+    <div id="localTimeView" style="display: none;">
+      <div class="datetime-header" id="localTimezoneLabel">Local Time</div>
+      <div class="datetime-display">
+        <div class="time-row">
+          <span class="time-text" id="currentTimeLocal">--:--:--</span>
+        </div>
+        <div class="date-row">
+          <span class="date-text" id="currentDateLocal">Date : ----------</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- กราฟ-->
+  <div id="chartWrapper" style="display: none;">
+    <h3>Visibility Graph</h3>
+    <div id="chartdiv"></div>
+    <button type="button" id="fulldataButton">Data from graph</button>
+  </div>
+</div>
+
+<div class="bottom-row" id="calculationResults" style="display: contents;">
+        <div id="tableWrapper" style="display: none;">
+          <h3>Ground Track Table</h3>
+          <div id="tableSection"></div>
+        </div>
+
+        <div id="satellite-info-wrapper" style="display: none;">
+          <div id="satellite-info" style="width: 470px; height: 220px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Search Results Modal/Popup -->
+<div id="searchModal" class="modal">
+  <div class="modal-content detailed-modal-content">
+    <div class="modal-header">
+      <h2 id="modalTitle">Search Results</h2>
+      <button class="modal-close-btn" id="closeModal">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="modalResults"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Detailed Table Modal สำหรับ Show All Data -->
+<div id="detailedTableModal" class="modal" style="display: none;">
+  <div class="modal-content detailed-modal-content">
+    <div class="modal-header">
+      <h2 id="detailedSatelliteName">Satellite Name</h2>
+      <button class="modal-close-btn" onclick="closeDetailedTable()">&times;</button>
+    </div>
+    
+    <div class="modal-body">
+      <table id="detailedDataTable">
+        <thead>
+          <tr>
+            <th>Time (UTC)</th>
+            <th>Time (Local)</th>
+            <th>Latitude (°)</th>
+            <th>Longitude (°)</th>
+            <th>Elevation (km)</th>
+          </tr>
+        </thead>
+        <tbody id="detailedTableBody">
+          <!-- Data จะถูกใส่ที่นี่ -->
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="modal-footer">
+      <strong>Total Records:</strong> <span id="totalRecords">0</span> time points
+    </div>
+  </div>
+</div>
+
+<!-- Chart Data Modal สำหรับ Data from graph -->
+<div id="detailedTableModalChart" class="modal" style="display: none;">
+  <div class="modal-content detailed-modal-content">
+    <div class="modal-header">
+      <h2 id="detailedSatelliteNameChart">Satellite Name - Graph Data</h2>
+      <button class="modal-close-btn" onclick="closeChartTable()">&times;</button>
+    </div>
+    
+    <div class="modal-body-chart">
+      <table id="detailedDatachart">
+        <thead>
+          <tr>
+            <th>Time (UTC)</th>
+            <th>Time (Local)</th>
+            <th>Altitude (°)</th>
+            <th>Azimuth (°)</th>
+            <th>Distance (km)</th>
+            <th>Sun Alt (°)</th>
+            <th>Sunlit</th>
+            <th>Visibility</th>
+          </tr>
+        </thead>
+        <tbody id="detailedTableBodychart">
+          <!-- Data จะถูกใส่ที่นี่ -->
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="modal-footer-chart">
+      <strong>Total Records:</strong> <span id="totalRecordsChart">0</span> time points
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="js/leaflet.js"></script>
+  <script src="js/leaflet.terminator.js"></script>
+  
+  <!-- Sidebar Toggle Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleBtn = document.getElementById('toggleSidebar');
+      const sidebar = document.getElementById('sidebar');
+      
+      toggleBtn.addEventListener('click', function() {
+        sidebar.classList.toggle('collapsed');
+        toggleBtn.classList.toggle('sidebar-collapsed');
+        
+
+      });
+      
+      window.addEventListener('resize', function() {
+        setTimeout(function() {
+          if (window.map && typeof window.map.invalidateSize === 'function') {
+            window.map.invalidateSize();
+          } else if (window.mapInstance && typeof window.mapInstance.invalidateSize === 'function') {
+            window.mapInstance.invalidateSize();
+          } else if (typeof map !== 'undefined' && typeof map.invalidateSize === 'function') {
+            map.invalidateSize();
+          }
+        }, 100);
+      });
+    });
+  </script>
+
+<!-- DateTime Script - Local Time Only -->
+<script>
+  let timezoneOffset = 0;
+  let hasCalculated = false;
+  let timezoneName = 'Local Time';
+  
+  function updateDateTime() {
+    if (!hasCalculated) {
+      // ยังไม่ได้คำนวณ - ไม่แสดงอะไร
+      return;
+    }
+    
+    const now = new Date();
+    
+    // Calculate local time
+    const localTime = new Date(now.getTime() + (timezoneOffset * 60 * 60 * 1000));
+    const localYear = localTime.getUTCFullYear();
+    const localMonth = String(localTime.getUTCMonth() + 1).padStart(2, '0');
+    const localDay = String(localTime.getUTCDate()).padStart(2, '0');
+    const localHours = String(localTime.getUTCHours()).padStart(2, '0');
+    const localMinutes = String(localTime.getUTCMinutes()).padStart(2, '0');
+    const localSeconds = String(localTime.getUTCSeconds()).padStart(2, '0');
+    
+    const dateLocalEl = document.getElementById('currentDateLocal');
+    const timeLocalEl = document.getElementById('currentTimeLocal');
+    if (dateLocalEl) dateLocalEl.textContent = `Date : ${localYear}-${localMonth}-${localDay}`;
+    if (timeLocalEl) timeLocalEl.textContent = `${localHours}:${localMinutes}:${localSeconds}`;
+  }
+  
+  function switchToLocalTimeView(timezone, offset) {
+    hasCalculated = true;
+    timezoneOffset = offset;
+    timezoneName = timezone;
+    
+    const offsetStr = offset >= 0 ? `UTC+${offset}` : `UTC${offset}`;
+    const labelEl = document.getElementById('localTimezoneLabel');
+    if (labelEl) labelEl.textContent = `Local (${timezone} ${offsetStr})`;
+    
+    const localView = document.getElementById('localTimeView');
+    if (localView) localView.style.display = 'block';
+    
+    updateDateTime();
+  }
+  
+  window.switchToLocalTimeView = switchToLocalTimeView;
+  setInterval(updateDateTime, 1000);
+</script>
+  
+  <script type="module">
+    import { initSidebar } from './js/Sidebar.js';
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      initSidebar();
+    });
+  </script>
+  
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/script.js"></script>
+  
+  <script src="js/navbar.js"></script>
+  <!-- <script src="js/responsive-scale.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    if (!('noModule' in HTMLScriptElement.prototype)) {
+      console.error('Your browser does not support ES6 modules. Please upgrade your browser.');
+      alert('Your browser is outdated. Please upgrade to use this application.');
+    }
+    
+    window.addEventListener('error', function(e) {
+      console.error('Script error:', e);
+      
+      if (e.error && e.error.message) {
+        if (e.error.message.includes('Authentication required') || 
+            e.error.message.includes('session has expired')) {
+          alert('Your session has expired. Please login again.');
+          window.location.href = '/login';
+          return;
+        }
+        
+        if (e.error.message.includes('import') || e.error.message.includes('module')) {
+          console.error('Module loading error. Check if all files exist.');
+          alert('Failed to load application modules. Please refresh the page.');
+          return;
+        }
+      }
+    });
+
+    window.addEventListener('unhandledrejection', function(e) {
+      console.error('Unhandled promise rejection:', e.reason);
+      
+      if (e.reason && typeof e.reason === 'object' && e.reason.message) {
+        if (e.reason.message.includes('Authentication required')) {
+          alert('Please login to continue');
+          window.location.href = '/login';
+          e.preventDefault();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

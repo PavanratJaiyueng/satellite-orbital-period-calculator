@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Access Tokens - SatTracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styleNavbar.css">
+    <link rel="stylesheet" href="css/stylegentoken.css" />
+</head>
+<body>
+    <div id="navbar"></div>
+    <div class="container">
+        <div class="header">
+            <div class="header-top">
+                <h1>Personal Access Tokens</h1>
+                <button class="generate-btn" id="generateBtn">
+                    <span id="generateText">Generate New Token</span>
+                    <span id="generateLoading" class="loading-spinner" style="display: none;"></span>
+                </button>
+            </div>
+            <div class="header-description">
+                Tokens you have generated that can be used to access the API. Tokens expire after 30 days.
+            </div>
+        </div>
+
+        <!-- Token Statistics -->
+        <div class="token-stats" id="tokenStats" style="display: none;">
+            <div class="stat-item">
+                <div class="stat-number" id="totalTokens">0</div>
+                <div class="stat-label">Total Tokens</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="activeTokens">0</div>
+                <div class="stat-label">Active</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="expiredTokens">0</div>
+                <div class="stat-label">Expired</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <table class="tokens-table" id="tokensTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Expires</th>
+                        <th>Last Used</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tokensTableBody">
+                    <tr>
+                        <td colspan="6" class="empty-state">
+                            <div class="loading-spinner"></div>
+                            Loading tokens...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Generate Token Modal -->
+    <div class="modal" id="generateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Generate New Token</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="tokenName">Token Name</label>
+                    <input type="text" class="form-input" id="tokenName" placeholder="e.g., My Application Token" maxlength="100">
+                </div>
+                
+                <div class="info-note">
+                    <strong>Token Expiration:</strong>
+                    This API token will automatically expire after 30 days.
+                </div>
+                
+                <div id="tokenResult" style="display: none;">
+                    <div class="token-display success" id="newTokenDisplay">
+                        <button class="copy-btn-inline" onclick="copyNewToken()">Copy</button>
+                        <div id="newTokenValue"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                <button class="generate-btn" id="modalGenerateBtn" onclick="generateToken()">
+                    Generate Token
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Token Modal -->
+    <div class="modal" id="viewTokenModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>View Token</h2>
+                <button class="modal-close" onclick="closeViewModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="token-display">
+                    <div class="token-header">
+                        <div class="token-label" id="viewTokenName">Token:</div>
+                        <button class="copy-btn-inline" id="copyViewTokenBtn" onclick="copyViewToken()">Copy</button>
+                    </div>
+                    <div class="token-value" id="viewTokenValue">Loading...</div>
+                </div>
+                <div class="security-warning">
+                    <strong>Security Notice:</strong> Keep this token secure and don't share it publicly. Anyone with this token can access your account through the API.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="closeViewModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/navbar.js"></script>
+    <script type="module">
+        import { requireAuth, preventBackToAuth } from './js/auth.js';
+        requireAuth();
+        preventBackToAuth();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        let currentNewToken = '';
+        let currentViewToken = '';
+
+        function showAlert(type, message) {
+            console.log(`${type}: ${message}`);
+            // Create a simple notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 5px;
+                color: white;
+                font-weight: bold;
+                z-index: 10000;
+                background-color: ${type === 'success' ? '#28a745' : '#dc3545'};
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (document.body.contains(notification)) {
+                    document.body.removeChild(notification);
+                }
+            }, 3000);
+        }
+
+        // Authentication helper functions
+        function getAuthToken() {
+            return sessionStorage.getItem('authToken');
+        }
+
+        async function makeAuthenticatedRequest(url, options = {}) {
+            const token = getAuthToken();
+            const headers = {
+                'Content-Type': 'application/json',
+                ...options.headers
+            };
+            
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+            
+            return fetch(url, {
+                ...options,
+                headers
+            });
+        }
+
+        // Modal functions
+        function openModal() {
+            const modal = document.getElementById('generateModal');
+            modal.style.display = 'block';
+            
+            // Reset form
+            document.getElementById('tokenName').value = '';
+            document.getElementById('tokenName').focus();
+            
+            // Hide token result
+            document.getElementById('tokenResult').style.display = 'none';
+            
+            // Reset button
+            const generateBtn = document.getElementById('modalGenerateBtn');
+            generateBtn.innerHTML = 'Generate Token';
+            generateBtn.onclick = generateToken;
+            generateBtn.disabled = false;
+            
+            currentNewToken = '';
+        }
+
+        function closeModal() {
+            document.getElementById('generateModal').style.display = 'none';
+        }
+
+        // Generate token
+        async function generateToken() {
+            const name = document.getElementById('tokenName').value.trim() || 'Unnamed Token';
+            const generateBtn = document.getElementById('modalGenerateBtn');
+            
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = '<span class="loading-spinner"></span>Generating...';
+
+            try {
+                const response = await fetch('/api/createtoken', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        name,
+                        expiryDays: 30
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Show the token in modal
+                    currentNewToken = data.token;
+                    document.getElementById('newTokenValue').textContent = data.token;
+                    document.getElementById('tokenResult').style.display = 'block';
+                    
+                    // Update button
+                    generateBtn.innerHTML = 'Done';
+                    generateBtn.onclick = function() { 
+                        closeModal(); 
+                        loadTokens(); 
+                    };
+                    generateBtn.disabled = false;
+                    
+                    showAlert('success', 'API token created successfully');
+                } else {
+                    showAlert('error', data.message || 'Failed to generate token');
+                    closeModal();
+                }
+            } catch (error) {
+                console.error('Generate token error:', error);
+                showAlert('error', 'Connection error occurred');
+                closeModal();
+            } finally {
+                if (generateBtn.innerHTML.includes('Generating')) {
+                    generateBtn.disabled = false;
+                    generateBtn.innerHTML = 'Generate Token';
+                }
+            }
+        }
+
+        // Copy new token
+        function copyNewToken() {
+            if (!currentNewToken) {
+                showAlert('error', 'No token to copy');
+                return;
+            }
+            
+            navigator.clipboard.writeText(currentNewToken).then(() => {
+                showAlert('success', 'Token copied to clipboard!');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = currentNewToken;
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    showAlert('success', 'Token copied to clipboard!');
+                } catch (err) {
+                    showAlert('error', 'Failed to copy token');
+                }
+                document.body.removeChild(textarea);
+            });
+        }
+
+        // Show token value function
+        async function showTokenValue(tokenId, tokenName) {
+            try {
+                // Since we store the JWT token, we can retrieve it from the database
+                const response = await fetch(`/api/showtoken/${tokenId}`);
+                const data = await response.json();
+                
+                if (data.success && data.token) {
+                    // Show in view token modal
+                    currentViewToken = data.token;
+                    document.getElementById('viewTokenName').textContent = tokenName;
+                    document.getElementById('viewTokenValue').textContent = data.token;
+                    document.getElementById('viewTokenModal').style.display = 'block';
+                } else {
+                    showAlert('error', 'Unable to retrieve token. Please generate a new one.');
+                }
+            } catch (error) {
+                console.error('Show token error:', error);
+                showAlert('error', 'Connection error occurred');
+            }
+        }
+
+        function closeViewModal() {
+            document.getElementById('viewTokenModal').style.display = 'none';
+            currentViewToken = '';
+        }
+
+        function copyViewToken() {
+            if (!currentViewToken) {
+                showAlert('error', 'No token to copy');
+                return;
+            }
+            
+            navigator.clipboard.writeText(currentViewToken).then(() => {
+                showAlert('success', 'Token copied to clipboard!');
+                const btn = document.getElementById('copyViewTokenBtn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                btn.disabled = true;
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }, 2000);
+            }).catch(() => {
+                showAlert('error', 'Failed to copy token');
+            });
+        }
+
+        // Format token status
+        function formatTokenStatus(token) {
+            if (token.status === 'expired') {
+                return '<span class="status-expired">Expired</span>';
+            }
+            if (token.isExpiringSoon) {
+                return `<span class="status-warning">Expires in ${token.daysUntilExpiry} days</span>`;
+            }
+            return '<span class="status-active">Active</span>';
+        }
+
+        // Load tokens
+        async function loadTokens() {
+            const tbody = document.getElementById('tokensTableBody');
+            const statsDiv = document.getElementById('tokenStats');
+            
+            try {
+                const response = await fetch('/api/showtokens');
+                const data = await response.json();
+
+                if (data.success) {
+                    // Update statistics
+                    if (data.tokens.length > 0) {
+                        document.getElementById('totalTokens').textContent = data.summary?.total || data.tokens.length;
+                        document.getElementById('activeTokens').textContent = data.summary?.active || data.tokens.filter(t => t.status === 'active').length;
+                        document.getElementById('expiredTokens').textContent = data.summary?.expired || data.tokens.filter(t => t.status === 'expired').length;
+                        statsDiv.style.display = 'flex';
+                    } else {
+                        statsDiv.style.display = 'none';
+                    }
+
+                    if (data.tokens.length === 0) {
+                        tbody.innerHTML = `
+                            <tr>
+                                <td colspan="6" class="empty-state">
+                                    <div class="empty-state-icon">🔑</div>
+                                    <div>You haven't created any personal access tokens yet.</div>
+                                    <small>API tokens provide persistent authentication for external applications</small>
+                                </td>
+                            </tr>
+                        `;
+                    } else {
+                        tbody.innerHTML = data.tokens.map(token => `
+                            <tr>
+                                <td>
+                                    <span class="token-name">${escapeHtml(token.name)}</span>
+                                </td>
+                                <td>
+                                    ${formatTokenStatus(token)}
+                                </td>
+                                <td class="token-date">
+                                    ${formatDate(token.createdAt)}
+                                </td>
+                                <td class="token-date">
+                                    ${token.expiresAt ? formatDate(token.expiresAt) : 'No expiration'}
+                                </td> 
+                                <td class="token-date">
+                                    ${token.lastUsed ? new Date(token.lastUsed).toLocaleString('th-TH', { 
+                                            year: 'numeric', month: '2-digit', day: '2-digit',
+                                            hour: '2-digit', minute: '2-digit', second: '2-digit'
+                                        }) : 'Never'}
+                                </td>
+                                <td>
+                                    <div class="token-actions">
+                                        ${token.status === 'active' ? `<button class="btn-small view-token-btn" onclick="showTokenValue('${token.id}', '${escapeHtml(token.name)}')">Show</button>` : ''}
+                                        <button class="btn-small btn-danger" onclick="deleteToken('${token.id}')">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `).join('');
+                    }
+                } else {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="empty-state" style="color: #d1242f;">
+                                Failed to load tokens: ${data.message || 'Unknown error'}
+                            </td>
+                        </tr>
+                    `;
+                    statsDiv.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Load tokens error:', error);
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="empty-state" style="color: #d1242f;">
+                            Connection error occurred
+                        </td>
+                    </tr>
+                `;
+                statsDiv.style.display = 'none';
+            }
+        }
+
+        // Delete token with custom modal
+        async function deleteToken(tokenId) {
+            // Create custom confirmation modal
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10000;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: white; padding: 20px; border-radius: 8px; max-width: 400px; width: 90%;">
+                    <h3 style="margin-top: 0; color: #dc3545;">Delete Token</h3>
+                    <p>Are you sure you want to delete this token?</p>
+                    <p><strong>This action cannot be undone</strong> and will immediately invalidate the token.</p>
+                    <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+                        <button id="cancelDelete" style="padding: 8px 16px; border: 1px solid #ccc; background: white; border-radius: 4px; cursor: pointer;">Cancel</button>
+                        <button id="confirmDelete" style="padding: 8px 16px; border: none; background: #dc3545; color: white; border-radius: 4px; cursor: pointer;">Delete</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Handle buttons
+            const cancelBtn = modal.querySelector('#cancelDelete');
+            const confirmBtn = modal.querySelector('#confirmDelete');
+            
+            return new Promise((resolve) => {
+                cancelBtn.onclick = () => {
+                    document.body.removeChild(modal);
+                    resolve(false);
+                };
+                
+                confirmBtn.onclick = async () => {
+                    document.body.removeChild(modal);
+                    
+                    try {
+                        const response = await fetch(`/api/deletetoken/${tokenId}`, {
+                            method: 'DELETE'
+                        });
+
+                        const data = await response.json();
+
+                        if (data.success) {
+                            showAlert('success', 'Token deleted successfully');
+                            loadTokens();
+                        } else {
+                            showAlert('error', data.message || 'Failed to delete token');
+                        }
+                    } catch (error) {
+                        console.error('Delete token error:', error);
+                        showAlert('error', 'Connection error occurred');
+                    }
+                };
+                
+                // Close on outside click
+                modal.onclick = (e) => {
+                    if (e.target === modal) {
+                        document.body.removeChild(modal);
+                        resolve(false);
+                    }
+                };
+            });
+        }
+
+        // Utility functions
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Event listeners
+        document.getElementById('generateBtn').addEventListener('click', openModal);
+        
+        // Close modals when clicking outside
+        document.getElementById('generateModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('generateModal')) {
+                closeModal();
+            }
+        });
+        
+        document.getElementById('viewTokenModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('viewTokenModal')) {
+                closeViewModal();
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeViewModal();
+            }
+        });
+
+        // Make functions globally available
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+        window.generateToken = generateToken;
+        window.copyNewToken = copyNewToken;
+        window.showTokenValue = showTokenValue;
+        window.closeViewModal = closeViewModal;
+        window.copyViewToken = copyViewToken;
+        window.deleteToken = deleteToken;
+
+        // Initialize
+        loadTokens();
+    </script>
+</body>
+</html>

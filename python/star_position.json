@@ -1,0 +1,1467 @@
+{
+  "latitude": 18.85249,
+  "longitude": 98.95748,
+  "timezone": "Asia/Bangkok",
+  "generated_at": "2025-10-08 08:32:35 UTC",
+  "calculation_info": {
+    "time_mode": "custom",
+    "calculation_method": "Custom Time Range",
+    "total_time_steps": 61,
+    "observation_start_utc": "2025-10-08 08:32:00 UTC",
+    "observation_end_utc": "2025-10-08 09:32:00 UTC",
+    "custom_start_time": "15:32",
+    "custom_end_time": "16:32"
+  },
+  "calculation_time": {
+    "utc": "2025-10-08 08:32:35 UTC",
+    "local": "2025-10-08 15:32:35 +07",
+    "timestamp": 1759912355.656327
+  },
+  "orbit_info": [
+    {
+      "name": "STARLINK-1008",
+      "orbital_period_minutes": 95.59,
+      "omm": {
+        "OBJECT_NAME": "STARLINK-1008",
+        "OBJECT_ID": 44714,
+        "EPOCH": "2025-09-10T10:34:09Z",
+        "MEAN_MOTION": 15.06403661,
+        "ECCENTRICITY": 0.00014,
+        "INCLINATION": 53.0546,
+        "RA_OF_ASC_NODE": 275.7925,
+        "ARG_OF_PERICENTER": 104.2749,
+        "MEAN_ANOMALY": 255.8395,
+        "BSTAR": 0.00016855,
+        "MEAN_MOTION_DOT": 6.757090680464158e-11,
+        "MEAN_MOTION_DDOT": 0.0
+      },
+      "time_step_minutes": 1.01,
+      "average_velocity_km_s": 7.598,
+      "distance_per_step_km": 458.74,
+      "radius_km": 6935.95,
+      "orbitaldistance_km": 43579.83,
+      "observation_period": {
+        "start_local": "2025-10-08 15:32:00 +07",
+        "end_local": "2025-10-08 16:32:00 +07",
+        "duration_minutes": 60.0,
+        "calculation_method": "Custom Time Range"
+      },
+      "positions": [
+        {
+          "datetime_local": "2025-10-08 15:32:00",
+          "datetime_utc": "2025-10-08 08:32:00 UTC",
+          "latitude": -52.719519,
+          "longitude": -74.075524,
+          "elevation_km": 565.06,
+          "sun_alt": 34.75
+        },
+        {
+          "datetime_local": "2025-10-08 15:33:00",
+          "datetime_utc": "2025-10-08 08:33:00 UTC",
+          "latitude": -52.000794,
+          "longitude": -68.267739,
+          "elevation_km": 564.84,
+          "sun_alt": 34.53
+        },
+        {
+          "datetime_local": "2025-10-08 15:34:00",
+          "datetime_utc": "2025-10-08 08:34:00 UTC",
+          "latitude": -50.981671,
+          "longitude": -62.689358,
+          "elevation_km": 564.51,
+          "sun_alt": 34.3
+        },
+        {
+          "datetime_local": "2025-10-08 15:35:01",
+          "datetime_utc": "2025-10-08 08:35:01 UTC",
+          "latitude": -49.685153,
+          "longitude": -57.392982,
+          "elevation_km": 564.06,
+          "sun_alt": 34.08
+        },
+        {
+          "datetime_local": "2025-10-08 15:36:01",
+          "datetime_utc": "2025-10-08 08:36:01 UTC",
+          "latitude": -48.137305,
+          "longitude": -52.410065,
+          "elevation_km": 563.5,
+          "sun_alt": 33.86
+        },
+        {
+          "datetime_local": "2025-10-08 15:37:01",
+          "datetime_utc": "2025-10-08 08:37:01 UTC",
+          "latitude": -46.365251,
+          "longitude": -47.753002,
+          "elevation_km": 562.84,
+          "sun_alt": 33.64
+        },
+        {
+          "datetime_local": "2025-10-08 15:38:02",
+          "datetime_utc": "2025-10-08 08:38:02 UTC",
+          "latitude": -44.395595,
+          "longitude": -43.418957,
+          "elevation_km": 562.09,
+          "sun_alt": 33.42
+        },
+        {
+          "datetime_local": "2025-10-08 15:39:02",
+          "datetime_utc": "2025-10-08 08:39:02 UTC",
+          "latitude": -42.253368,
+          "longitude": -39.394148,
+          "elevation_km": 561.27,
+          "sun_alt": 33.19
+        },
+        {
+          "datetime_local": "2025-10-08 15:40:02",
+          "datetime_utc": "2025-10-08 08:40:02 UTC",
+          "latitude": -39.961424,
+          "longitude": -35.657784,
+          "elevation_km": 560.38,
+          "sun_alt": 32.97
+        },
+        {
+          "datetime_local": "2025-10-08 15:41:03",
+          "datetime_utc": "2025-10-08 08:41:03 UTC",
+          "latitude": -37.540209,
+          "longitude": -32.185227,
+          "elevation_km": 559.44,
+          "sun_alt": 32.75
+        },
+        {
+          "datetime_local": "2025-10-08 15:42:03",
+          "datetime_utc": "2025-10-08 08:42:03 UTC",
+          "latitude": -35.007762,
+          "longitude": -28.950303,
+          "elevation_km": 558.46,
+          "sun_alt": 32.52
+        },
+        {
+          "datetime_local": "2025-10-08 15:43:04",
+          "datetime_utc": "2025-10-08 08:43:04 UTC",
+          "latitude": -32.379872,
+          "longitude": -25.926854,
+          "elevation_km": 557.45,
+          "sun_alt": 32.3
+        },
+        {
+          "datetime_local": "2025-10-08 15:44:04",
+          "datetime_utc": "2025-10-08 08:44:04 UTC",
+          "latitude": -29.670301,
+          "longitude": -23.089691,
+          "elevation_km": 556.44,
+          "sun_alt": 32.08
+        },
+        {
+          "datetime_local": "2025-10-08 15:45:04",
+          "datetime_utc": "2025-10-08 08:45:04 UTC",
+          "latitude": -26.89105,
+          "longitude": -20.415106,
+          "elevation_km": 555.43,
+          "sun_alt": 31.85
+        },
+        {
+          "datetime_local": "2025-10-08 15:46:05",
+          "datetime_utc": "2025-10-08 08:46:05 UTC",
+          "latitude": -24.052606,
+          "longitude": -17.88109,
+          "elevation_km": 554.44,
+          "sun_alt": 31.63
+        },
+        {
+          "datetime_local": "2025-10-08 15:47:05",
+          "datetime_utc": "2025-10-08 08:47:05 UTC",
+          "latitude": -21.16419,
+          "longitude": -15.467353,
+          "elevation_km": 553.49,
+          "sun_alt": 31.41
+        },
+        {
+          "datetime_local": "2025-10-08 15:48:05",
+          "datetime_utc": "2025-10-08 08:48:05 UTC",
+          "latitude": -18.233968,
+          "longitude": -13.155232,
+          "elevation_km": 552.57,
+          "sun_alt": 31.18
+        },
+        {
+          "datetime_local": "2025-10-08 15:49:06",
+          "datetime_utc": "2025-10-08 08:49:06 UTC",
+          "latitude": -15.269247,
+          "longitude": -10.927526,
+          "elevation_km": 551.72,
+          "sun_alt": 30.96
+        },
+        {
+          "datetime_local": "2025-10-08 15:50:06",
+          "datetime_utc": "2025-10-08 08:50:06 UTC",
+          "latitude": -12.276641,
+          "longitude": -8.768301,
+          "elevation_km": 550.93,
+          "sun_alt": 30.73
+        },
+        {
+          "datetime_local": "2025-10-08 15:51:07",
+          "datetime_utc": "2025-10-08 08:51:07 UTC",
+          "latitude": -9.262219,
+          "longitude": -6.662679,
+          "elevation_km": 550.22,
+          "sun_alt": 30.51
+        },
+        {
+          "datetime_local": "2025-10-08 15:52:07",
+          "datetime_utc": "2025-10-08 08:52:07 UTC",
+          "latitude": -6.231636,
+          "longitude": -4.596617,
+          "elevation_km": 549.6,
+          "sun_alt": 30.28
+        },
+        {
+          "datetime_local": "2025-10-08 15:53:07",
+          "datetime_utc": "2025-10-08 08:53:07 UTC",
+          "latitude": -3.190246,
+          "longitude": -2.556699,
+          "elevation_km": 549.06,
+          "sun_alt": 30.06
+        },
+        {
+          "datetime_local": "2025-10-08 15:54:08",
+          "datetime_utc": "2025-10-08 08:54:08 UTC",
+          "latitude": -0.14321,
+          "longitude": -0.529922,
+          "elevation_km": 548.62,
+          "sun_alt": 29.83
+        },
+        {
+          "datetime_local": "2025-10-08 15:55:08",
+          "datetime_utc": "2025-10-08 08:55:08 UTC",
+          "latitude": 2.904404,
+          "longitude": 1.496511,
+          "elevation_km": 548.28,
+          "sun_alt": 29.61
+        },
+        {
+          "datetime_local": "2025-10-08 15:56:08",
+          "datetime_utc": "2025-10-08 08:56:08 UTC",
+          "latitude": 5.947531,
+          "longitude": 3.535393,
+          "elevation_km": 548.04,
+          "sun_alt": 29.38
+        },
+        {
+          "datetime_local": "2025-10-08 15:57:09",
+          "datetime_utc": "2025-10-08 08:57:09 UTC",
+          "latitude": 8.981007,
+          "longitude": 5.599722,
+          "elevation_km": 547.89,
+          "sun_alt": 29.16
+        },
+        {
+          "datetime_local": "2025-10-08 15:58:09",
+          "datetime_utc": "2025-10-08 08:58:09 UTC",
+          "latitude": 11.999475,
+          "longitude": 7.702903,
+          "elevation_km": 547.84,
+          "sun_alt": 28.93
+        },
+        {
+          "datetime_local": "2025-10-08 15:59:10",
+          "datetime_utc": "2025-10-08 08:59:10 UTC",
+          "latitude": 14.997279,
+          "longitude": 9.858965,
+          "elevation_km": 547.89,
+          "sun_alt": 28.7
+        },
+        {
+          "datetime_local": "2025-10-08 16:00:10",
+          "datetime_utc": "2025-10-08 09:00:10 UTC",
+          "latitude": 17.968345,
+          "longitude": 12.082775,
+          "elevation_km": 548.01,
+          "sun_alt": 28.48
+        },
+        {
+          "datetime_local": "2025-10-08 16:01:10",
+          "datetime_utc": "2025-10-08 09:01:10 UTC",
+          "latitude": 20.906055,
+          "longitude": 14.390252,
+          "elevation_km": 548.22,
+          "sun_alt": 28.25
+        },
+        {
+          "datetime_local": "2025-10-08 16:02:11",
+          "datetime_utc": "2025-10-08 09:02:11 UTC",
+          "latitude": 23.803101,
+          "longitude": 16.798587,
+          "elevation_km": 548.49,
+          "sun_alt": 28.02
+        },
+        {
+          "datetime_local": "2025-10-08 16:03:11",
+          "datetime_utc": "2025-10-08 09:03:11 UTC",
+          "latitude": 26.651311,
+          "longitude": 19.326444,
+          "elevation_km": 548.82,
+          "sun_alt": 27.8
+        },
+        {
+          "datetime_local": "2025-10-08 16:04:11",
+          "datetime_utc": "2025-10-08 09:04:11 UTC",
+          "latitude": 29.441463,
+          "longitude": 21.994126,
+          "elevation_km": 549.21,
+          "sun_alt": 27.57
+        },
+        {
+          "datetime_local": "2025-10-08 16:05:12",
+          "datetime_utc": "2025-10-08 09:05:12 UTC",
+          "latitude": 32.163061,
+          "longitude": 24.823683,
+          "elevation_km": 549.63,
+          "sun_alt": 27.34
+        },
+        {
+          "datetime_local": "2025-10-08 16:06:12",
+          "datetime_utc": "2025-10-08 09:06:12 UTC",
+          "latitude": 34.8041,
+          "longitude": 27.838901,
+          "elevation_km": 550.07,
+          "sun_alt": 27.12
+        },
+        {
+          "datetime_local": "2025-10-08 16:07:13",
+          "datetime_utc": "2025-10-08 09:07:13 UTC",
+          "latitude": 37.3508,
+          "longitude": 31.065103,
+          "elevation_km": 550.53,
+          "sun_alt": 26.89
+        },
+        {
+          "datetime_local": "2025-10-08 16:08:13",
+          "datetime_utc": "2025-10-08 09:08:13 UTC",
+          "latitude": 39.787349,
+          "longitude": 34.528657,
+          "elevation_km": 550.99,
+          "sun_alt": 26.66
+        },
+        {
+          "datetime_local": "2025-10-08 16:09:13",
+          "datetime_utc": "2025-10-08 09:09:13 UTC",
+          "latitude": 42.095663,
+          "longitude": 38.256048,
+          "elevation_km": 551.44,
+          "sun_alt": 26.43
+        },
+        {
+          "datetime_local": "2025-10-08 16:10:14",
+          "datetime_utc": "2025-10-08 09:10:14 UTC",
+          "latitude": 44.255223,
+          "longitude": 42.272355,
+          "elevation_km": 551.87,
+          "sun_alt": 26.21
+        },
+        {
+          "datetime_local": "2025-10-08 16:11:14",
+          "datetime_utc": "2025-10-08 09:11:14 UTC",
+          "latitude": 46.243059,
+          "longitude": 46.598962,
+          "elevation_km": 552.27,
+          "sun_alt": 25.98
+        },
+        {
+          "datetime_local": "2025-10-08 16:12:14",
+          "datetime_utc": "2025-10-08 09:12:14 UTC",
+          "latitude": 48.033964,
+          "longitude": 51.250395,
+          "elevation_km": 552.62,
+          "sun_alt": 25.75
+        },
+        {
+          "datetime_local": "2025-10-08 16:13:15",
+          "datetime_utc": "2025-10-08 09:13:15 UTC",
+          "latitude": 49.601081,
+          "longitude": 56.230365,
+          "elevation_km": 552.93,
+          "sun_alt": 25.52
+        },
+        {
+          "datetime_local": "2025-10-08 16:14:15",
+          "datetime_utc": "2025-10-08 09:14:15 UTC",
+          "latitude": 50.916946,
+          "longitude": 61.527403,
+          "elevation_km": 553.17,
+          "sun_alt": 25.29
+        },
+        {
+          "datetime_local": "2025-10-08 16:15:16",
+          "datetime_utc": "2025-10-08 09:15:16 UTC",
+          "latitude": 51.95506,
+          "longitude": 67.110906,
+          "elevation_km": 553.35,
+          "sun_alt": 25.07
+        },
+        {
+          "datetime_local": "2025-10-08 16:16:16",
+          "datetime_utc": "2025-10-08 09:16:16 UTC",
+          "latitude": 52.691915,
+          "longitude": 72.928864,
+          "elevation_km": 553.45,
+          "sun_alt": 24.84
+        },
+        {
+          "datetime_local": "2025-10-08 16:17:16",
+          "datetime_utc": "2025-10-08 09:17:16 UTC",
+          "latitude": 53.109238,
+          "longitude": 78.908625,
+          "elevation_km": 553.49,
+          "sun_alt": 24.61
+        },
+        {
+          "datetime_local": "2025-10-08 16:18:17",
+          "datetime_utc": "2025-10-08 09:18:17 UTC",
+          "latitude": 53.196031,
+          "longitude": 84.961567,
+          "elevation_km": 553.44,
+          "sun_alt": 24.38
+        },
+        {
+          "datetime_local": "2025-10-08 16:19:17",
+          "datetime_utc": "2025-10-08 09:19:17 UTC",
+          "latitude": 52.949932,
+          "longitude": 90.991369,
+          "elevation_km": 553.32,
+          "sun_alt": 24.15
+        },
+        {
+          "datetime_local": "2025-10-08 16:20:17",
+          "datetime_utc": "2025-10-08 09:20:17 UTC",
+          "latitude": 52.377516,
+          "longitude": 96.904178,
+          "elevation_km": 553.13,
+          "sun_alt": 23.92
+        },
+        {
+          "datetime_local": "2025-10-08 16:21:18",
+          "datetime_utc": "2025-10-08 09:21:18 UTC",
+          "latitude": 51.49346,
+          "longitude": 102.61816,
+          "elevation_km": 552.86,
+          "sun_alt": 23.69
+        },
+        {
+          "datetime_local": "2025-10-08 16:22:18",
+          "datetime_utc": "2025-10-08 09:22:18 UTC",
+          "latitude": 50.3188,
+          "longitude": 108.070183,
+          "elevation_km": 552.53,
+          "sun_alt": 23.46
+        },
+        {
+          "datetime_local": "2025-10-08 16:23:19",
+          "datetime_utc": "2025-10-08 09:23:19 UTC",
+          "latitude": 48.878734,
+          "longitude": 113.218575,
+          "elevation_km": 552.14,
+          "sun_alt": 23.23
+        },
+        {
+          "datetime_local": "2025-10-08 16:24:19",
+          "datetime_utc": "2025-10-08 09:24:19 UTC",
+          "latitude": 47.200442,
+          "longitude": 118.042286,
+          "elevation_km": 551.69,
+          "sun_alt": 23.0
+        },
+        {
+          "datetime_local": "2025-10-08 16:25:19",
+          "datetime_utc": "2025-10-08 09:25:19 UTC",
+          "latitude": 45.311255,
+          "longitude": 122.537637,
+          "elevation_km": 551.2,
+          "sun_alt": 22.77
+        },
+        {
+          "datetime_local": "2025-10-08 16:26:20",
+          "datetime_utc": "2025-10-08 09:26:20 UTC",
+          "latitude": 43.237338,
+          "longitude": 126.714037,
+          "elevation_km": 550.68,
+          "sun_alt": 22.54
+        },
+        {
+          "datetime_local": "2025-10-08 16:27:20",
+          "datetime_utc": "2025-10-08 09:27:20 UTC",
+          "latitude": 41.002875,
+          "longitude": 130.589736,
+          "elevation_km": 550.13,
+          "sun_alt": 22.31
+        },
+        {
+          "datetime_local": "2025-10-08 16:28:20",
+          "datetime_utc": "2025-10-08 09:28:20 UTC",
+          "latitude": 38.62968,
+          "longitude": 134.188222,
+          "elevation_km": 549.57,
+          "sun_alt": 22.08
+        },
+        {
+          "datetime_local": "2025-10-08 16:29:21",
+          "datetime_utc": "2025-10-08 09:29:21 UTC",
+          "latitude": 36.137096,
+          "longitude": 137.535484,
+          "elevation_km": 549.02,
+          "sun_alt": 21.85
+        },
+        {
+          "datetime_local": "2025-10-08 16:30:21",
+          "datetime_utc": "2025-10-08 09:30:21 UTC",
+          "latitude": 33.5421,
+          "longitude": 140.658102,
+          "elevation_km": 548.47,
+          "sun_alt": 21.62
+        },
+        {
+          "datetime_local": "2025-10-08 16:31:22",
+          "datetime_utc": "2025-10-08 09:31:22 UTC",
+          "latitude": 30.859508,
+          "longitude": 143.582035,
+          "elevation_km": 547.95,
+          "sun_alt": 21.39
+        }
+      ]
+    }
+  ],
+  "minute_results": [
+    {
+      "local_time": "2025-10-08 15:32:00 +07",
+      "utc_time": "2025-10-08 08:32:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -72.257063,
+          "azimuth": 187.578831,
+          "distance_km": 12716.777,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 34.75
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:33:00 +07",
+      "utc_time": "2025-10-08 08:33:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -72.080771,
+          "azimuth": 193.97848,
+          "distance_km": 12705.421,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 34.53
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:34:00 +07",
+      "utc_time": "2025-10-08 08:34:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -71.747433,
+          "azimuth": 200.227598,
+          "distance_km": 12683.551,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 34.31
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:35:00 +07",
+      "utc_time": "2025-10-08 08:35:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -71.265353,
+          "azimuth": 206.248751,
+          "distance_km": 12651.185,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 34.09
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:36:00 +07",
+      "utc_time": "2025-10-08 08:36:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -70.645569,
+          "azimuth": 211.985052,
+          "distance_km": 12608.352,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 33.87
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:37:00 +07",
+      "utc_time": "2025-10-08 08:37:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -69.900742,
+          "azimuth": 217.401559,
+          "distance_km": 12555.093,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 33.65
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:38:00 +07",
+      "utc_time": "2025-10-08 08:38:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -69.044131,
+          "azimuth": 222.48335,
+          "distance_km": 12491.46,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 33.42
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:39:00 +07",
+      "utc_time": "2025-10-08 08:39:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -68.088775,
+          "azimuth": 227.231636,
+          "distance_km": 12417.518,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 33.2
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:40:00 +07",
+      "utc_time": "2025-10-08 08:40:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -67.046938,
+          "azimuth": 231.659277,
+          "distance_km": 12333.342,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 32.98
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:41:00 +07",
+      "utc_time": "2025-10-08 08:41:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -65.929791,
+          "azimuth": 235.786621,
+          "distance_km": 12239.021,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 32.76
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:42:00 +07",
+      "utc_time": "2025-10-08 08:42:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -64.747275,
+          "azimuth": 239.638132,
+          "distance_km": 12134.654,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 32.54
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:43:00 +07",
+      "utc_time": "2025-10-08 08:43:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -63.508099,
+          "azimuth": 243.239924,
+          "distance_km": 12020.354,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 32.32
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:44:00 +07",
+      "utc_time": "2025-10-08 08:44:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -62.219808,
+          "azimuth": 246.618087,
+          "distance_km": 11896.247,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 32.09
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:45:00 +07",
+      "utc_time": "2025-10-08 08:45:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -60.888895,
+          "azimuth": 249.797671,
+          "distance_km": 11762.472,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 31.87
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:46:00 +07",
+      "utc_time": "2025-10-08 08:46:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -59.520927,
+          "azimuth": 252.802123,
+          "distance_km": 11619.181,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 31.65
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:47:00 +07",
+      "utc_time": "2025-10-08 08:47:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -58.120667,
+          "azimuth": 255.653039,
+          "distance_km": 11466.54,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 31.43
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:48:00 +07",
+      "utc_time": "2025-10-08 08:48:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -56.692194,
+          "azimuth": 258.370134,
+          "distance_km": 11304.73,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 31.2
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:49:00 +07",
+      "utc_time": "2025-10-08 08:49:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -55.239006,
+          "azimuth": 260.971314,
+          "distance_km": 11133.947,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 30.98
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:50:00 +07",
+      "utc_time": "2025-10-08 08:50:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -53.76411,
+          "azimuth": 263.472835,
+          "distance_km": 10954.403,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 30.76
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:51:00 +07",
+      "utc_time": "2025-10-08 08:51:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -52.270104,
+          "azimuth": 265.889487,
+          "distance_km": 10766.325,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 30.53
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:52:00 +07",
+      "utc_time": "2025-10-08 08:52:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -50.759239,
+          "azimuth": 268.234787,
+          "distance_km": 10569.958,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 30.31
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:53:00 +07",
+      "utc_time": "2025-10-08 08:53:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -49.233484,
+          "azimuth": 270.521182,
+          "distance_km": 10365.566,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 30.09
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:54:00 +07",
+      "utc_time": "2025-10-08 08:54:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -47.694565,
+          "azimuth": 272.760238,
+          "distance_km": 10153.432,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 29.86
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:55:00 +07",
+      "utc_time": "2025-10-08 08:55:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -46.144014,
+          "azimuth": 274.962821,
+          "distance_km": 9933.86,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 29.64
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:56:00 +07",
+      "utc_time": "2025-10-08 08:56:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -44.583204,
+          "azimuth": 277.139276,
+          "distance_km": 9707.174,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 29.42
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:57:00 +07",
+      "utc_time": "2025-10-08 08:57:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -43.013378,
+          "azimuth": 279.299589,
+          "distance_km": 9473.727,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 29.19
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:58:00 +07",
+      "utc_time": "2025-10-08 08:58:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -41.435683,
+          "azimuth": 281.453552,
+          "distance_km": 9233.894,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 28.97
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 15:59:00 +07",
+      "utc_time": "2025-10-08 08:59:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -39.851194,
+          "azimuth": 283.61092,
+          "distance_km": 8988.084,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 28.74
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:00:00 +07",
+      "utc_time": "2025-10-08 09:00:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -38.26094,
+          "azimuth": 285.781574,
+          "distance_km": 8736.736,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 28.52
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:01:00 +07",
+      "utc_time": "2025-10-08 09:01:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -36.665936,
+          "azimuth": 287.975685,
+          "distance_km": 8480.327,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 28.29
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:02:00 +07",
+      "utc_time": "2025-10-08 09:02:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -35.06721,
+          "azimuth": 290.203889,
+          "distance_km": 8219.377,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 28.07
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:03:00 +07",
+      "utc_time": "2025-10-08 09:03:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -33.465837,
+          "azimuth": 292.477466,
+          "distance_km": 7954.453,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 27.84
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:04:00 +07",
+      "utc_time": "2025-10-08 09:04:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -31.862981,
+          "azimuth": 294.808544,
+          "distance_km": 7686.18,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 27.62
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:05:00 +07",
+      "utc_time": "2025-10-08 09:05:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -30.259944,
+          "azimuth": 297.210311,
+          "distance_km": 7415.245,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 27.39
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:06:00 +07",
+      "utc_time": "2025-10-08 09:06:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -28.658224,
+          "azimuth": 299.697252,
+          "distance_km": 7142.412,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 27.16
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:07:00 +07",
+      "utc_time": "2025-10-08 09:07:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -27.059605,
+          "azimuth": 302.285399,
+          "distance_km": 6868.535,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 26.94
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:08:00 +07",
+      "utc_time": "2025-10-08 09:08:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -25.466251,
+          "azimuth": 304.992597,
+          "distance_km": 6594.572,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 26.71
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:09:00 +07",
+      "utc_time": "2025-10-08 09:09:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -23.880851,
+          "azimuth": 307.838773,
+          "distance_km": 6321.605,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 26.49
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:10:00 +07",
+      "utc_time": "2025-10-08 09:10:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -22.306797,
+          "azimuth": 310.846183,
+          "distance_km": 6050.865,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 26.26
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:11:00 +07",
+      "utc_time": "2025-10-08 09:11:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -20.748423,
+          "azimuth": 314.039597,
+          "distance_km": 5783.757,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 26.03
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:12:00 +07",
+      "utc_time": "2025-10-08 09:12:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -19.211319,
+          "azimuth": 317.446364,
+          "distance_km": 5521.891,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 25.81
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:13:00 +07",
+      "utc_time": "2025-10-08 09:13:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -17.702726,
+          "azimuth": 321.096246,
+          "distance_km": 5267.117,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 25.58
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:14:00 +07",
+      "utc_time": "2025-10-08 09:14:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -16.232039,
+          "azimuth": 325.020865,
+          "distance_km": 5021.559,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 25.35
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:15:00 +07",
+      "utc_time": "2025-10-08 09:15:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -14.81139,
+          "azimuth": 329.252558,
+          "distance_km": 4787.648,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 25.13
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:16:00 +07",
+      "utc_time": "2025-10-08 09:16:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -13.4563,
+          "azimuth": 333.82235,
+          "distance_km": 4568.144,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 24.9
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:17:00 +07",
+      "utc_time": "2025-10-08 09:17:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -12.18627,
+          "azimuth": 338.756769,
+          "distance_km": 4366.136,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 24.67
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:18:00 +07",
+      "utc_time": "2025-10-08 09:18:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -11.025135,
+          "azimuth": 344.073295,
+          "distance_km": 4185.009,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 24.44
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:19:00 +07",
+      "utc_time": "2025-10-08 09:19:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -10.000869,
+          "azimuth": 349.774535,
+          "distance_km": 4028.346,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 24.22
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:20:00 +07",
+      "utc_time": "2025-10-08 09:20:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -9.144444,
+          "azimuth": 355.84179,
+          "distance_km": 3899.768,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 23.99
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:21:00 +07",
+      "utc_time": "2025-10-08 09:21:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -8.487431,
+          "azimuth": 2.229506,
+          "distance_km": 3802.685,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 23.76
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:22:00 +07",
+      "utc_time": "2025-10-08 09:22:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -8.058311,
+          "azimuth": 8.862817,
+          "distance_km": 3739.988,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 23.53
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:23:00 +07",
+      "utc_time": "2025-10-08 09:23:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -7.878114,
+          "azimuth": 15.64039,
+          "distance_km": 3713.724,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 23.31
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:24:00 +07",
+      "utc_time": "2025-10-08 09:24:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -7.956567,
+          "azimuth": 22.443516,
+          "distance_km": 3724.833,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 23.08
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:25:00 +07",
+      "utc_time": "2025-10-08 09:25:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -8.290155,
+          "azimuth": 29.149947,
+          "distance_km": 3773.015,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 22.85
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:26:00 +07",
+      "utc_time": "2025-10-08 09:26:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -8.862858,
+          "azimuth": 35.648752,
+          "distance_km": 3856.778,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 22.62
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:27:00 +07",
+      "utc_time": "2025-10-08 09:27:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -9.649278,
+          "azimuth": 41.851974,
+          "distance_km": 3973.642,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 22.39
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:28:00 +07",
+      "utc_time": "2025-10-08 09:28:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -10.618941,
+          "azimuth": 47.70039,
+          "distance_km": 4120.446,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 22.16
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:29:00 +07",
+      "utc_time": "2025-10-08 09:29:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -11.740406,
+          "azimuth": 53.163308,
+          "distance_km": 4293.671,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 21.94
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:30:00 +07",
+      "utc_time": "2025-10-08 09:30:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -12.984286,
+          "azimuth": 58.234149,
+          "distance_km": 4489.717,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 21.71
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:31:00 +07",
+      "utc_time": "2025-10-08 09:31:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -14.324937,
+          "azimuth": 62.924193,
+          "distance_km": 4705.109,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 21.48
+        }
+      ]
+    },
+    {
+      "local_time": "2025-10-08 16:32:00 +07",
+      "utc_time": "2025-10-08 09:32:00 UTC",
+      "satellites": [
+        {
+          "name": "STARLINK-1008",
+          "altitude": -15.741037,
+          "azimuth": 67.256339,
+          "distance_km": 4936.621,
+          "is_sunlit": true,
+          "is_visible": false,
+          "sun_alt": 21.25
+        }
+      ]
+    }
+  ],
+  "current_positions": [
+    {
+      "name": "STARLINK-1008",
+      "current_time_utc": "2025-10-08 08:32:35 UTC",
+      "current_time_local": "2025-10-08 15:32:35 +07",
+      "latitude": -52.332512,
+      "longitude": -70.621469,
+      "elevation_km": 564.94,
+      "altitude_from_observer": -72.171583,
+      "azimuth_from_observer": 191.395141,
+      "distance_from_observer_km": 12711.297,
+      "orbital_velocity_km_s": 7.598,
+      "is_sunlit": true,
+      "is_visible": false,
+      "sun_altitude": 34.62
+    }
+  ]
+}

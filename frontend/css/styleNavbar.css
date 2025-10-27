@@ -1,0 +1,373 @@
+/* ==========================================
+   แก้ไข NAVBAR RESPONSIVE - เพิ่มเข้าไปในไฟล์ CSS
+   ========================================== */
+
+/* Base Navbar Styles */
+.custom-navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1030;
+    background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.custom-navbar .container-fluid {
+    position: relative;
+}
+
+.navbar-brand {
+    color: #ffffff;
+    margin-left: 20px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand:hover {
+    color: #4a9eff;
+}
+
+/* Nav Links */
+.navbar-nav .nav-item .dropdown-item {
+    color: #ffffff;
+    padding: 8px 16px;
+    transition: color 0.2s;
+}
+
+.navbar-nav .nav-item .dropdown-item:hover {
+    color: #4a9eff;
+    background: transparent;
+}
+
+/* User Dropdown Button */
+#userDropdown {
+    border: none !important;
+    color: #ffffff !important;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    margin-right: 30px;
+}
+
+#userDropdown:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(74, 158, 255, 0.3) !important;
+}
+
+/* Username Text */
+.username-text {
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* Dropdown Menu - Dark Theme */
+.user-dropdown {
+    min-width: 260px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0;
+    margin-top: 8px;
+    background: #1a2332;
+}
+
+/* Dropdown Header */
+.user-dropdown .dropdown-header {
+    background-image: url('/icon/backdropdrow1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white !important;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+    margin: 0;
+    position: relative;
+}
+
+.user-dropdown .dropdown-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(26, 35, 50, 0.7) 0%, rgba(15, 20, 25, 0.8) 100%);
+    border-radius: 8px 8px 0 0;
+    z-index: 0;
+}
+
+.user-greeting {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 1;
+    color: #ffffff !important;
+}
+
+.user-name {
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+    color: #ffffff !important;
+}
+
+/* Dropdown Items - Dark Theme */
+.user-dropdown .dropdown-item {
+    padding: 12px 20px;
+    font-size: 15px;
+    transition: background-color 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    color: #e2e8f0 !important;
+    border: none;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+}
+
+.user-dropdown .dropdown-item:hover {
+    background-color: rgba(74, 158, 255, 0.1);
+    color: #ffffff !important;
+}
+
+.user-dropdown .dropdown-item i {
+    width: 20px;
+    color: #94a3b8;
+}
+
+.user-dropdown .dropdown-item:hover i {
+    color: #4a9eff;
+}
+
+/* Current Page Style */
+.user-dropdown .dropdown-item.current-page {
+    pointer-events: none;
+    background-color: rgba(74, 158, 255, 0.15);
+    color: #4a9eff !important;
+    font-weight: 500;
+}
+
+.user-dropdown .dropdown-item.current-page i {
+    color: #4a9eff;
+}
+
+/* Logout Button */
+.user-dropdown .dropdown-item.text-danger {
+    color: #ff6b6b !important;
+}
+
+.user-dropdown .dropdown-item.text-danger:hover {
+    background-color: rgba(255, 107, 107, 0.1);
+    color: #ff8787 !important;
+}
+
+.user-dropdown .dropdown-item.text-danger i {
+    color: #ff6b6b;
+}
+
+/* Dropdown Divider */
+.user-dropdown .dropdown-divider {
+    margin: 0;
+    opacity: 0.1;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown Toggle Arrow */
+.dropdown-toggle::after {
+    margin-left: 8px;
+    transition: transform 0.2s;
+}
+
+.dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+}
+
+/* ==========================================
+   UTC CLOCK STYLES
+   ========================================== */
+.utc-clock {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    margin: 0 !important;
+}
+
+.utc-label {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.utc-time {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+   RESPONSIVE FIX สำหรับหน้าจอเล็ก (991px ลงมา)
+   ========================================== */
+
+/* ป้องกัน dropdown หายไปในหน้าจอเล็ก - เริ่มที่ 991px */
+@media (max-width: 991px) {
+    
+    /* บังคับให้ navbar-collapse แสดงตลอดเวลา */
+    .navbar-collapse {
+        display: flex !important;
+        flex-grow: 0 !important;
+        flex-basis: auto !important;
+    }
+    
+    /* ให้ navbar items แสดงแบบ inline */
+    .navbar-nav {
+        flex-direction: row !important;
+        align-items: center !important;
+    }
+    
+    /* ซ่อนปุ่ม hamburger ถ้ามี */
+    .navbar-toggler {
+        display: none !important;
+    }
+    
+    /* ลด margin ของปุ่ม user dropdown */
+    #userDropdown {
+        margin-right: 15px;
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+    
+    /* ปรับขนาด dropdown menu */
+    .user-dropdown {
+        min-width: 240px;
+        right: 0 !important;
+        left: auto !important;
+    }
+    
+    .user-dropdown .dropdown-header {
+        padding: 15px;
+    }
+    
+    .user-greeting {
+        font-size: 12px;
+    }
+    
+    .user-name {
+        font-size: 16px;
+    }
+    
+    .user-dropdown .dropdown-item {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    /* ลด margin ของ brand */
+    .navbar-brand {
+        margin-left: 15px;
+        font-size: 18px;
+    }
+}
+
+/* สำหรับหน้าจอเล็กมาก (768px ลงมา) */
+@media (max-width: 768px) {
+    
+    #userDropdown {
+        margin-right: 10px;
+        padding: 5px 8px;
+        font-size: 13px;
+    }
+    
+    /* ซ่อนข้อความ username ในหน้าจอเล็กมาก แสดงแค่ไอคอน */
+    .username-text {
+        display: none;
+    }
+    
+    /* แสดงแค่ไอคอน user */
+    #userDropdown::before {
+        content: '\f007'; /* Font Awesome user icon */
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        font-size: 16px;
+    }
+    
+    .user-dropdown {
+        min-width: 220px;
+    }
+    
+    .navbar-brand {
+        margin-left: 10px;
+        font-size: 16px;
+    }
+    
+    /* ปรับขนาดนาฬิกา UTC */
+    .utc-clock {
+        gap: 6px;
+        font-size: 14px;
+    }
+    
+    .utc-label,
+    .utc-time {
+        font-size: 14px;
+    }
+}
+
+/* สำหรับหน้าจอมือถือเล็ก (480px ลงมา) */
+@media (max-width: 480px) {
+    
+    .user-dropdown {
+        min-width: 200px;
+        font-size: 13px;
+    }
+    
+    .user-dropdown .dropdown-header {
+        padding: 12px;
+    }
+    
+    .user-greeting {
+        font-size: 11px;
+    }
+    
+    .user-name {
+        font-size: 14px;
+    }
+    
+    .user-dropdown .dropdown-item {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .navbar-brand {
+        font-size: 14px;
+        margin-left: 8px;
+    }
+    
+    /* ปรับขนาดนาฬิกา UTC ในหน้าจอเล็กมาก */
+    .utc-clock {
+        gap: 4px;
+        font-size: 12px;
+    }
+    
+    .utc-label,
+    .utc-time {
+        font-size: 12px;
+    }
+}

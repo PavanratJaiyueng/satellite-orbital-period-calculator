@@ -1,0 +1,482 @@
+/* ==========================================
+   HELP PAGE - DARK NAVY THEME (เหมือน Sidebar)
+   ========================================== */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #0f1823;
+    padding-top: 80px;
+    color: #e8edf5;
+}
+
+/* ===== HELP HEADER ===== */
+.help-header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6b 100%);
+    color: white;
+    padding: 40px 0;
+    margin-bottom: 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.help-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.help-header p {
+    margin: 10px 0 0;
+    opacity: 0.9;
+    font-size: 1.1rem;
+    color: #e8edf5;
+}
+
+/* ===== HELP LAYOUT ===== */
+.help-layout {
+    display: flex;
+    min-height: calc(100vh - 240px);
+    background: #0f1823;
+}
+
+/* ===== HELP SIDEBAR ===== */
+.help-sidebar {
+    width: 280px;
+    background: #1a2332;
+    border-right: 1px solid #2d4a6b;
+    padding: 20px 0;
+    overflow-y: auto;
+    position: sticky;
+    top: 80px;
+    height: calc(100vh - 80px);
+}
+
+.help-sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.help-sidebar::-webkit-scrollbar-track {
+    background: #0f1823;
+}
+
+.help-sidebar::-webkit-scrollbar-thumb {
+    background: #2d4a6b;
+    border-radius: 3px;
+}
+
+.help-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #3d5a7b;
+}
+
+.help-sidebar h6 {
+    padding: 0 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.help-sidebar h6:first-child {
+    margin-top: 0;
+}
+
+.help-sidebar .nav-link {
+    color: #bdbdbd;
+    padding: 12px 20px;
+    border-left: 3px solid transparent;
+    border-radius: 0;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+}
+
+.help-sidebar .nav-link i {
+    width: 20px;
+    text-align: center;
+    color: #94a3b8;
+}
+
+.help-sidebar .nav-link:hover {
+    background-color: #243447;
+    color: #4a9eff;
+    border-left-color: #2d4a6b;
+}
+
+.help-sidebar .nav-link:hover i {
+    color: #4a9eff;
+}
+
+.help-sidebar .nav-link.active {
+    background-color: #243447;
+    color: #4a9eff;
+    border-left-color: #4a9eff;
+    font-weight: 500;
+}
+
+.help-sidebar .nav-link.active i {
+    color: #4a9eff;
+}
+
+/* ===== HELP CONTENT ===== */
+.help-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #0f1823;
+}
+
+.help-content::-webkit-scrollbar {
+    width: 12px;
+}
+
+.help-content::-webkit-scrollbar-track {
+    background: #0f1823;
+}
+
+.help-content::-webkit-scrollbar-thumb {
+    background: #2d4a6b;
+    border-radius: 3px;
+}
+
+.help-content::-webkit-scrollbar-thumb:hover {
+    background: #3d5a7b;
+}
+
+/* ===== HELP SECTIONS ===== */
+.help-section h3 {
+    color: #4a9eff;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #2d4a6b;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.help-section h4 {
+    color: #e8edf5;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.help-section h5 {
+    color: #94a3b8;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.help-section p {
+    color: #bdbdbd;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.help-section ul, .help-section ol {
+    color: #bdbdbd;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    padding-left: 25px;
+}
+
+.help-section li {
+    margin-bottom: 10px;
+}
+
+.help-section strong {
+    color: #e8edf5;
+    font-weight: 600;
+}
+
+/* ===== INFO BOXES ===== */
+.info-box {
+    background: rgba(33, 150, 243, 0.1);
+    border-left: 4px solid #2196F3;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    color: #bdbdbd;
+}
+
+.info-box strong {
+    color: #4a9eff;
+}
+
+.warning-box {
+    background: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid #ffc107;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    color: #bdbdbd;
+}
+
+.warning-box strong {
+    color: #ffc107;
+}
+
+.tip-box {
+    background: rgba(23, 162, 184, 0.1);
+    border-left: 4px solid #17a2b8;
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    color: #bdbdbd;
+}
+
+.tip-box strong {
+    color: #17a2b8;
+}
+
+.tip-box ul {
+    color: #bdbdbd;
+}
+
+/* ===== EXAMPLE BOX ===== */
+.example-box {
+    background: #1a2332;
+    border: 1px solid #2d4a6b;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+    font-family: 'Courier New', monospace;
+    color: #e8edf5;
+}
+
+.example-box strong {
+    color: #4a9eff;
+}
+
+/* ===== COLOR LEGEND ===== */
+.color-legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+.color-legend ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.color-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.color-box {
+    width: 30px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px solid #2d4a6b;
+}
+
+/* ===== STEP LIST ===== */
+.step-list {
+    counter-reset: step-counter;
+    list-style: none;
+    padding-left: 0;
+}
+
+.step-list li {
+    counter-increment: step-counter;
+    position: relative;
+    padding-left: 50px;
+    margin-bottom: 20px;
+    color: #bdbdbd;
+}
+
+.step-list li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 35px;
+    height: 35px;
+    background: #4a9eff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.step-list li strong {
+    color: #e8edf5;
+}
+
+.step-list li p {
+    margin-top: 5px;
+    color: #94a3b8;
+}
+
+/* ===== CODE BLOCK ===== */
+.code-block {
+    background: #1a2332;
+    color: #4a9eff;
+    padding: 20px;
+    border-radius: 6px;
+    margin: 15px 0;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    border: 1px solid #2d4a6b;
+}
+
+/* ===== ENDPOINT BOX ===== */
+.endpoint-box {
+    background: #1a2332;
+    border: 1px solid #2d4a6b;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.endpoint-box .method {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-right: 10px;
+}
+
+.endpoint-box strong {
+    color: #e8edf5;
+}
+
+.endpoint-box p {
+    color: #94a3b8;
+}
+
+.endpoint-box ul {
+    color: #bdbdbd;
+}
+
+.method-get {
+    background: #28a745;
+    color: white;
+}
+
+.method-post {
+    background: #007bff;
+    color: white;
+}
+
+/* ===== IMAGE STYLING ===== */
+.help-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #2d4a6b;
+    margin: 15px 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .help-layout {
+        flex-direction: column;
+    }
+
+    .help-sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #2d4a6b;
+    }
+
+    .help-content {
+        padding: 20px;
+    }
+
+    .help-header h1 {
+        font-size: 2rem;
+    }
+
+    .help-header p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+
+    .help-header {
+        padding: 30px 15px;
+    }
+
+    .help-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .help-content {
+        padding: 15px;
+    }
+
+    .help-section h3 {
+        font-size: 1.5rem;
+    }
+
+    .help-section h4 {
+        font-size: 1.2rem;
+    }
+
+    .help-section h5 {
+        font-size: 1rem;
+    }
+
+    .step-list li {
+        padding-left: 45px;
+    }
+
+    .step-list li::before {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .help-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .help-header p {
+        font-size: 0.9rem;
+    }
+
+    .help-section h3 {
+        font-size: 1.3rem;
+    }
+
+    .color-legend {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .endpoint-box .method {
+        display: block;
+        margin-bottom: 8px;
+    }
+}
